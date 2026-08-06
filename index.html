@@ -438,7 +438,7 @@
       .page-shell { width: 210mm; max-width: 210mm; margin: 0; border: 0; box-shadow: none; overflow: visible; }
       .site-nav { display: none !important; }
       .container { padding-inline: 9mm; }
-      .hero { padding: 7mm 9mm 5mm; }
+      .hero { padding: 7mm 9mm 6mm; border-bottom: 0; }
       .hero-layout { grid-template-columns: minmax(0, 1fr) 26mm; gap: 6mm; align-items: center; }
       .eyebrow { font-size: 6.5pt; }
       .eyebrow::before { width: 7mm; height: 1px; }
@@ -450,17 +450,17 @@
       .contact-list b { margin-right: 1.5mm; font-size: 6pt; }
       .portrait-frame { justify-self: end; margin: 0; }
       .hero-portrait { width: 26mm; height: 32mm; filter: none; }
-      .evidence-strip { display: flex; margin-top: 3mm; }
-      .evidence-strip > div { flex: 1 1 0; min-height: 0; padding: 2mm 3mm; }
+      .evidence-strip { display: flex; gap: 4mm; margin-top: 3.5mm; border: 0; }
+      .evidence-strip > div { flex: 1 1 0; min-height: 0; padding: 1.5mm 0 1.5mm 3mm; border: 0; border-left: 1.5px solid var(--accent); }
       .evidence-strip > div:first-child { padding-left: 3mm; }
       .evidence-strip strong { font-size: 9.5pt; line-height: 1.25; }
       .evidence-strip span { font-size: 6.3pt; }
-      .resume-section { padding-block: 4.5mm; }
+      .resume-section { padding-block: 5.5mm; border-bottom: 0; }
       .section-heading { grid-template-columns: 9mm 1fr; gap: 2.5mm; margin-bottom: 3.5mm; }
       .section-index { font-size: 6pt; }
       .section-heading h2 { font-size: 14pt; line-height: 1.2; }
       .profile-copy { max-width: none; font-size: 8pt; line-height: 1.55; }
-      .timeline-item { grid-template-columns: 27mm minmax(0, 1fr); gap: 4.5mm; padding-block: 3mm; }
+      .timeline-item { position: relative; grid-template-columns: 27mm minmax(0, 1fr); gap: 4.5mm; padding-block: 3.7mm; border-top: 0; }
       .timeline-date { font-size: 6.3pt; line-height: 1.4; }
       .timeline-body h3 { font-size: 9.2pt; line-height: 1.35; }
       .timeline-role { margin-top: .7mm; font-size: 7pt; }
@@ -468,19 +468,22 @@
       .timeline-body li { padding-left: 3.2mm; font-size: 8pt; line-height: 1.5; }
       .timeline-body li + li { margin-top: .8mm; }
       .timeline-body li::before { top: .62em; width: 1mm; height: 1mm; }
-      #capabilities { break-before: page; padding-top: 7mm; }
-      .capability-group { min-height: 0; padding: 4mm 4.5mm; }
+      .timeline-item + .timeline-item::before { position: absolute; top: 0; right: 0; left: 31.5mm; height: 1px; background: var(--line); content: ""; }
+      #capabilities { break-before: page; padding-top: 12mm; }
+      .capability-grid { gap: 5mm 7mm; background: transparent; border: 0; }
+      .capability-group { min-height: 0; padding: 4mm 0 4mm 4mm; border-left: 1.5px solid var(--line-dark); background: transparent; }
       .capability-group h3 { font-size: 9pt; }
       .capability-group p { margin-top: 1.8mm; font-size: 7.2pt; line-height: 1.5; }
-      #projects { padding-top: 5mm; padding-bottom: 2.5mm; }
-      .project-grid { gap: 3.5mm; }
-      .project-item { padding: 4mm; }
+      #projects { padding-top: 8mm; padding-bottom: 3.5mm; }
+      .project-grid { gap: 5mm 4.5mm; }
+      .project-item { padding: 4.5mm 3mm 4.5mm 4mm; border: 0; border-left: 1.5px solid var(--line-dark); background: transparent; }
       .project-index { font-size: 5.8pt; }
       .project-item h3 { margin-top: 1.3mm; font-size: 9pt; line-height: 1.35; }
       .project-item > p:not(.project-index) { margin-top: 1.6mm; font-size: 7.3pt; line-height: 1.5; }
-      .project-evidence { padding-top: 1.6mm; }
+      .project-evidence { padding-top: 1.2mm; border-top: 0; }
       .tech-list { gap: 1.2mm; margin-top: 2mm; }
       .tech-list li { padding: .6mm 1.2mm; font-size: 5.8pt; }
+      .project-item:last-child { grid-column: 1 / -1; width: calc(50% - 2.25mm); justify-self: center; }
       footer { padding: 2.5mm 9mm 7mm; }
       .footer-inner { font-size: 6.2pt; }
       .reveal { opacity: 1 !important; transform: none !important; }

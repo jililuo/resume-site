@@ -356,6 +356,27 @@
       font-size: .58rem;
     }
 
+    .career-motto {
+      display: grid;
+      grid-template-columns: 126px minmax(0, 1fr);
+      align-items: end;
+      gap: 28px;
+      padding-block: 34px;
+      border-bottom: 1px solid var(--line);
+    }
+    .motto-label {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .62rem;
+      font-weight: 600;
+    }
+    .motto-copy {
+      color: var(--ink-soft);
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
     footer { padding-block: 28px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .68rem; }
     .footer-inner a:hover { color: var(--accent); }
@@ -412,6 +433,7 @@
       .timeline-item { gap: 9px; }
       .timeline-date { flex-direction: row; align-items: center; gap: 6px; }
       .capability-group { min-height: auto; }
+      .career-motto { grid-template-columns: 1fr; gap: 8px; }
       .footer-inner { flex-direction: column; }
     }
     @media (max-width: 420px) {
@@ -484,6 +506,15 @@
       .tech-list { gap: 1.2mm; margin-top: 2.3mm; }
       .tech-list li { padding: .6mm 1.2mm; font-size: 5.8pt; }
       footer { display: none; }
+      .career-motto {
+        grid-template-columns: 27mm minmax(0, 1fr);
+        gap: 4.5mm;
+        margin-top: 10mm;
+        padding: 3mm 9mm 7mm;
+        border: 0;
+      }
+      .motto-label { font-size: 5.8pt; }
+      .motto-copy { font-size: 10pt; line-height: 1.35; text-align: right; }
       .footer-inner { font-size: 6.2pt; }
       .reveal { opacity: 1 !important; transform: none !important; }
       .timeline-item, .project-item, .capability-group { break-inside: avoid; }
@@ -669,6 +700,11 @@
       </section>
 
     </main>
+
+    <aside class="career-motto container" aria-label="职业宣言">
+      <span class="motto-label">CAREER PRINCIPLE</span>
+      <p class="motto-copy">Perfection is getting every little thing right.</p>
+    </aside>
 
     <footer class="container">
       <div class="footer-inner">

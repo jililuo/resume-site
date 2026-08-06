@@ -1,1203 +1,662 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>周志阳 · Java 后端工程师</title>
-  <meta name="description" content="周志阳 - 5年经验 Java 后端工程师，专注 Spring Cloud / 高并发架构 / 知识图谱" />
-  <meta property="og:title" content="周志阳 · Java 后端工程师" />
-  <meta property="og:description" content="后端工程师 | Java | Spring Cloud | 高并发 | 知识图谱" />
-  <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>周志阳 · 高级后端工程师｜FDE 方向</title>
+  <meta name="description" content="周志阳，近 8 年企业级软件研发经验，专注 Java/C# 后端、复杂业务系统、Dify 工作流与 Milvus RAG 应用。">
+  <meta property="og:title" content="周志阳 · 高级后端工程师｜FDE 方向">
+  <meta property="og:description" content="企业级后端研发｜CargoWise｜Dify 工作流｜Milvus RAG">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
-    /* ===================== RESET & ROOT ===================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
     :root {
-      --bg:           #f5f2ee;
-      --bg-warm:      #ede9e3;
-      --bg-card:      #ffffff;
-      --border:       #d8d2ca;
-      --border-dark:  #c4bdb4;
-
-      --ink:          #1a1814;
-      --ink-light:    #4a4540;
-      --ink-muted:    #8a827a;
-      --ink-ghost:    #c4bdb4;
-
-      --accent:       #c0392b;
-      --accent-light: #e84c3d;
-      --accent-warm:  #d4860a;
-
-      --font-serif:   'Noto Serif SC', 'Songti SC', serif;
-      --font-sans:    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
-
-      --max-w: 900px;
-      --radius: 4px;
+      --canvas: #e6e8e7;
+      --paper: #faf9f6;
+      --paper-deep: #efede7;
+      --ink: #1d1e1b;
+      --ink-soft: #52554e;
+      --muted: #74766f;
+      --line: #d1cec5;
+      --line-dark: #b9b5ac;
+      --accent: #b93d31;
+      --evidence: #cc9431;
+      --serif: "Noto Serif SC", "Songti SC", serif;
+      --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono: "JetBrains Mono", "Cascadia Mono", monospace;
+      --content-width: 980px;
     }
-
-    html { font-size: 16px; scroll-behavior: smooth; }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font-sans);
-      background: var(--bg);
+      min-width: 320px;
+      background: var(--canvas);
       color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
-
-    ::selection { background: rgba(192,57,43,0.15); color: var(--accent); }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 2px; }
-
-    img { max-width: 100%; display: block; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 40px;
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    ::selection { background: rgba(185, 61, 49, .16); color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .page-shell {
+      width: min(100%, var(--content-width));
+      margin: 28px auto;
+      background: var(--paper);
+      border: 1px solid rgba(29, 30, 27, .08);
+      box-shadow: 0 18px 48px rgba(24, 28, 25, .11);
     }
-
-    /* ===================== NAV ===================== */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-    nav.scrolled {
-      background: rgba(245,242,238,0.92);
-      backdrop-filter: blur(12px);
+    .container { padding-inline: 46px; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 249, 246, .96);
+      border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 40px;
-      height: 52px;
+      min-height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
+      padding-inline: 46px;
     }
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: .96rem;
       font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.02em;
     }
-    .nav-links { display: flex; gap: 4px; list-style: none; }
-    .nav-links a {
-      font-size: 0.82rem;
+    .nav-brand span {
+      margin-left: 8px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .66rem;
       font-weight: 500;
-      color: var(--ink-muted);
-      padding: 5px 14px;
-      border-radius: 3px;
-      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      padding: 0;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 11px;
+      color: var(--muted);
+      font-size: .77rem;
+      font-weight: 600;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
       cursor: pointer;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--ink);
-      background: rgba(0,0,0,0.04);
+    .menu-button span,
+    .menu-button::before,
+    .menu-button::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 4px auto;
+      background: currentColor;
+      content: "";
+      transition: transform .2s ease, opacity .2s ease;
     }
-    .nav-links a.active { color: var(--accent); }
+    .menu-button[aria-expanded="true"] span { opacity: 0; }
+    .menu-button[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
+    .menu-button[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
 
-    /* ===================== HERO ===================== */
-    #hero {
-      padding: calc(52px + 72px) 0 64px;
-      border-bottom: 1px solid var(--border);
+    .hero {
+      padding-block: 58px 46px;
+      border-bottom: 1px solid var(--line);
     }
-
     .hero-layout {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
+      grid-template-columns: minmax(0, 1fr) 148px;
       align-items: start;
-    }
-
-    .hero-left {}
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: var(--accent);
-    }
-
-    .hero-name {
-      font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 7vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .hero-subtitle {
-      font-family: var(--font-sans);
-      font-size: 1.1rem;
-      color: var(--ink-light);
-      margin-bottom: 28px;
-      font-weight: 300;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 28px;
-    }
-    .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px 12px 0;
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      border-right: 1px solid var(--border);
-      margin-right: 20px;
-    }
-    .hero-meta-item:last-child { border-right: none; margin-right: 0; }
-    .hero-meta-item strong { color: var(--ink); font-weight: 600; }
-    .hero-meta-icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: var(--bg-warm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 28px;
-    }
-    .hero-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      padding: 4px 12px;
-      border-radius: 2px;
-      background: var(--ink);
-      color: var(--bg);
-      letter-spacing: 0.04em;
-    }
-    .hero-tag.accent { background: var(--accent); }
-
-    .hero-links { display: flex; gap: 10px; }
-    .hero-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px; height: 38px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      color: var(--ink-muted);
-      background: var(--bg-card);
-      transition: all 0.2s;
-    }
-    .hero-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .hero-avatar-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-    .hero-avatar {
-      width: 160px;
-      height: 200px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border-dark);
-      position: relative;
-    }
-    .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(15%) contrast(1.05);
-    }
-    .hero-avatar::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(192,57,43,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-avatar-deco {
-      width: 160px;
-      height: 200px;
-      border: 2px solid var(--accent);
-      border-radius: var(--radius);
-      position: absolute;
-      top: 8px; left: 8px;
-      z-index: -1;
-      opacity: 0.4;
-    }
-
-    /* ===================== SECTION BASE ===================== */
-    section { padding: 72px 0; }
-    section + section { border-top: 1px solid var(--border); }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-    .section-num {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--ink-ghost);
-      letter-spacing: 0.1em;
-    }
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      position: relative;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -6px;
-      width: 32px; height: 2px;
-      background: var(--accent);
-    }
-
-    /* ===================== ABOUT ===================== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       gap: 48px;
     }
-    .about-text p {
-      font-size: 0.95rem;
-      color: var(--ink-light);
-      margin-bottom: 18px;
-      line-height: 1.85;
-      text-align: justify;
-    }
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .eval-box {
-      background: var(--bg-warm);
-      border-left: 3px solid var(--accent);
-      padding: 20px 24px;
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    .eval-title {
-      font-family: var(--font-serif);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 10px;
-    }
-    .eval-text {
-      font-size: 0.88rem;
-      color: var(--ink-light);
-      line-height: 1.85;
-    }
-
-    /* ===================== SKILLS ===================== */
-    #skills { background: var(--bg-warm); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .skill-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .skill-card:hover {
-      border-color: var(--border-dark);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-    .skill-card-title {
-      font-family: var(--font-serif);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .skill-card-title .icon {
-      font-size: 1rem;
-    }
-    .skill-items { display: flex; flex-direction: column; gap: 10px; }
-    .skill-row {
+    .eyebrow {
       display: flex;
       align-items: center;
       gap: 10px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 600;
     }
-    .skill-name {
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      width: 100px;
-      flex-shrink: 0;
+    .eyebrow::before { width: 28px; height: 3px; background: var(--accent); content: ""; }
+    .hero h1 {
+      margin-top: 18px;
+      font-family: var(--serif);
+      font-size: 3.7rem;
+      line-height: 1.08;
+      font-weight: 700;
+    }
+    .hero-role {
+      margin-top: 8px;
+      color: var(--ink-soft);
+      font-size: 1.07rem;
       font-weight: 500;
     }
-    .skill-level {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      background: rgba(192,57,43,0.08);
-      padding: 1px 6px;
-      border-radius: 2px;
-      letter-spacing: 0.05em;
+    .hero-summary {
+      max-width: 640px;
+      margin-top: 18px;
+      color: var(--ink-soft);
+      font-size: .92rem;
+      line-height: 1.9;
     }
-    .skill-bar-wrap {
-      flex: 1;
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      border-radius: 2px;
-      width: 0;
-      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .skill-bar-fill.animated { width: var(--w); }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-    .skill-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      padding: 3px 9px;
-      border-radius: 2px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--ink-muted);
-    }
-
-    /* ===================== EXPERIENCE ===================== */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 32px;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-    .exp-item:last-child { border-bottom: none; }
-
-    .exp-time-col {
-      padding-top: 4px;
-    }
-    .exp-time {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--ink-muted);
-      line-height: 1.5;
-      letter-spacing: 0.02em;
-    }
-    .exp-duration {
-      font-size: 0.75rem;
-      color: var(--accent);
-      margin-top: 4px;
-      font-family: var(--font-mono);
-    }
-
-    .exp-body {}
-    .exp-header { margin-bottom: 14px; }
-    .exp-company {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-    .exp-role {
-      font-size: 0.88rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .exp-dept {
-      font-size: 0.82rem;
-      color: var(--ink-muted);
-    }
-
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .exp-bullets li {
-      font-size: 0.88rem;
-      color: var(--ink-light);
-      padding-left: 16px;
-      position: relative;
-      line-height: 1.7;
-    }
-    .exp-bullets li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--ink-ghost);
-      font-size: 0.75rem;
-    }
-
-    /* ===================== PROJECTS ===================== */
-    #projects { background: var(--bg-warm); }
-
-    .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .proj-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
-    }
-    .proj-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
-      border-color: var(--border-dark);
-      transform: translateY(-2px);
-    }
-    .proj-top {
-      padding: 22px 24px 18px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-    .proj-num {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--ink-ghost);
-      margin-bottom: 8px;
-      letter-spacing: 0.08em;
-    }
-    .proj-name {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .proj-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      padding: 2px 8px;
-      border-radius: 2px;
-      background: rgba(192,57,43,0.08);
-      color: var(--accent);
-      border: 1px solid rgba(192,57,43,0.2);
-      vertical-align: middle;
-      margin-left: 6px;
-    }
-    .proj-desc {
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      line-height: 1.7;
-    }
-    .proj-body { padding: 18px 24px 20px; }
-    .proj-highlight-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 7px;
-    }
-    .proj-highlight-text {
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-    .proj-tech { display: flex; flex-wrap: wrap; gap: 5px; }
-    .proj-tech-tag {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 2px 8px;
-      border-radius: 2px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--ink-muted);
-    }
-
-    /* ===================== WORKS ===================== */
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .work-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px 24px;
-      text-decoration: none;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-      display: block;
-    }
-    .work-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 6px 24px rgba(192,57,43,0.1);
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-    .work-icon {
-      width: 52px; height: 52px;
-      border-radius: 10px;
-      background: var(--bg-warm);
-      border: 1px solid var(--border);
+    .contact-list {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--ink-light);
-      margin-bottom: 16px;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .work-card:hover .work-icon {
-      background: rgba(192,57,43,0.08);
-      border-color: rgba(192,57,43,0.3);
-      color: var(--accent);
-    }
-    .work-name {
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .work-desc {
-      font-size: 0.85rem;
-      color: var(--ink-muted);
-      line-height: 1.65;
-      margin-bottom: 16px;
-    }
-    .work-link {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* ===================== FOOTER ===================== */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 0;
-    }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px 22px;
+      margin-top: 23px;
+      list-style: none;
+      padding: 0;
     }
-    .footer-left {
-      font-size: 0.82rem;
-      color: var(--ink-muted);
+    .contact-list a,
+    .contact-list span {
+      color: var(--ink-soft);
+      font-size: .75rem;
     }
-    .footer-right { display: flex; gap: 8px; }
-    .footer-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px; height: 34px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      color: var(--ink-muted);
-      background: var(--bg-card);
-      transition: all 0.2s;
+    .contact-list b {
+      margin-right: 6px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .62rem;
     }
-    .footer-icon:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-list a:hover { color: var(--accent); }
+    .portrait-frame {
+      justify-self: end;
+      align-self: center;
+    }
+    .hero-portrait {
+      position: relative;
+      z-index: 1;
+      width: 148px;
+      height: 184px;
+      object-fit: cover;
+      border: 1px solid var(--line-dark);
+      filter: grayscale(12%) contrast(1.03);
+    }
+    .evidence-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 42px;
+      border-block: 1px solid var(--line);
+    }
+    .evidence-strip > div {
+      min-width: 0;
+      min-height: 82px;
+      padding: 15px 14px;
+      border-right: 1px solid var(--line);
+    }
+    .evidence-strip > div:first-child { padding-left: 0; }
+    .evidence-strip > div:last-child { border-right: 0; }
+    .evidence-strip strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.13rem;
+      line-height: 1.45;
+    }
+    .evidence-strip span { color: var(--muted); font-size: .68rem; }
 
-    /* ===================== REVEAL ===================== */
+    .resume-section {
+      padding-block: 58px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 58px;
+    }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+    .section-index { color: #aaa69d; font-family: var(--mono); font-size: .68rem; }
+    .section-heading h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.35; }
+    .profile-copy {
+      max-width: 820px;
+      color: var(--ink-soft);
+      font-size: .88rem;
+      line-height: 1.95;
+    }
+
+    .timeline { display: grid; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 126px minmax(0, 1fr);
+      gap: 28px;
+      padding-block: 27px;
+      border-top: 1px solid var(--line);
+    }
+    .timeline-item:first-child { padding-top: 0; border-top: 0; }
+    .timeline-date {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .68rem;
+      line-height: 1.7;
+    }
+    .timeline-date span { color: var(--line-dark); }
+    .timeline-body h3 { font-family: var(--serif); font-size: 1rem; line-height: 1.55; }
+    .timeline-role { margin-top: 3px; color: var(--muted); font-size: .73rem; }
+    .timeline-body ul { margin-top: 12px; list-style: none; padding: 0; }
+    .timeline-body li {
+      position: relative;
+      padding-left: 17px;
+      color: var(--ink-soft);
+      font-size: .81rem;
+      line-height: 1.82;
+    }
+    .timeline-body li + li { margin-top: 5px; }
+    .timeline-body li::before {
+      position: absolute;
+      top: .72em;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      background: var(--evidence);
+      content: "";
+    }
+
+    #capabilities { background: var(--paper-deep); }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .capability-group {
+      min-width: 0;
+      min-height: 156px;
+      padding: 22px;
+      background: var(--paper);
+    }
+    .capability-group h3 { font-family: var(--serif); font-size: .93rem; }
+    .capability-group p {
+      margin-top: 11px;
+      color: var(--ink-soft);
+      font-family: var(--mono);
+      font-size: .69rem;
+      line-height: 1.95;
+      overflow-wrap: anywhere;
+    }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project-item {
+      min-width: 0;
+      padding: 23px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .project-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-dark);
+      box-shadow: 0 8px 22px rgba(24, 28, 25, .07);
+    }
+    .project-index { color: var(--accent); font-family: var(--mono); font-size: .6rem; }
+    .project-item h3 { margin-top: 9px; font-family: var(--serif); font-size: .98rem; line-height: 1.55; }
+    .project-item > p:not(.project-index) { margin-top: 10px; color: var(--ink-soft); font-size: .77rem; line-height: 1.8; }
+    .project-evidence {
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted) !important;
+    }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; list-style: none; padding: 0; }
+    .tech-list li {
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      background: var(--paper-deep);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .58rem;
+    }
+
+    footer { padding-block: 28px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .68rem; }
+    .footer-inner a:hover { color: var(--accent); }
+
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(14px);
+      transition: opacity .45s ease, transform .45s ease;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-d1 { transition-delay: 0.1s; }
-    .reveal-d2 { transition-delay: 0.18s; }
-    .reveal-d3 { transition-delay: 0.26s; }
-    .reveal-d4 { transition-delay: 0.34s; }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 768px) {
-      .container { padding: 0 24px; }
-      .nav-links { display: none; }
+    @media (max-width: 760px) {
+      body { background: var(--paper); }
+      .page-shell { margin: 0; border: 0; box-shadow: none; }
+      .container, .nav-inner { padding-inline: 22px; }
+      .menu-button { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 10px 22px 18px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-links.is-open { display: grid; }
+      .nav-links a { min-height: 42px; display: flex; align-items: center; padding-inline: 0; }
+      .hero { padding-block: 42px 38px; }
+      .hero-layout { grid-template-columns: minmax(0, 1fr) 96px; gap: 20px; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero-role { font-size: .94rem; }
+      .hero-summary { font-size: .84rem; }
+      .portrait-frame { margin-top: 28px; }
+      .hero-portrait { width: 96px; height: 120px; }
+      .contact-list { grid-column: 1 / -1; }
+      .evidence-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .evidence-strip > div { border-bottom: 1px solid var(--line); }
+      .evidence-strip > div:nth-child(2) { border-right: 0; }
+      .evidence-strip > div:nth-child(3) {
+        grid-column: 1 / -1;
+        padding-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+      }
+      .resume-section { padding-block: 46px; }
+      .section-heading { grid-template-columns: 36px 1fr; gap: 12px; margin-bottom: 27px; }
+      .section-heading h2 { font-size: 1.32rem; }
+      .timeline-item,
+      .capability-grid,
+      .project-grid { grid-template-columns: 1fr; }
+      .timeline-item { gap: 9px; }
+      .timeline-date { flex-direction: row; align-items: center; gap: 6px; }
+      .capability-group { min-height: auto; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
       .hero-layout { grid-template-columns: 1fr; }
-      .hero-avatar-wrap { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .exp-item { grid-template-columns: 1fr; gap: 12px; }
-      .exp-time-col { display: flex; gap: 12px; align-items: center; }
-      .proj-grid { grid-template-columns: 1fr; }
-      section { padding: 56px 0; }
-      .section-title { font-size: 1.3rem; }
+      .portrait-frame { order: -1; margin-top: 0; width: 82px; }
+      .hero-portrait { width: 82px; height: 102px; }
+      .hero h1 { font-size: 2.35rem; }
+      .eyebrow { font-size: .58rem; }
+      .evidence-strip strong { font-size: .96rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media print {
+      @page { size: A4; margin: 11mm; }
+      html { font-size: 10.5pt; }
+      body, .page-shell, #capabilities { background: #fff; }
+      .page-shell { width: auto; max-width: none; margin: 0; border: 0; box-shadow: none; }
+      .site-nav { display: none !important; }
+      .container { padding-inline: 0; }
+      .hero { padding-top: 0; }
+      .resume-section { padding-block: 9mm; }
+      .hero-portrait { filter: grayscale(100%); }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .timeline-item, .project-item, .capability-group, .work-item { break-inside: avoid; }
+      .project-item:hover { transform: none; box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+      footer { padding-bottom: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="page-shell">
+    <nav class="site-nav" aria-label="主导航">
+      <div class="nav-inner">
+        <a class="nav-brand" href="#profile">周志阳 <span>RESUME / 2026</span></a>
+        <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航"><span></span></button>
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="#profile">概览</a></li>
+          <li><a href="#experience">经历</a></li>
+          <li><a href="#capabilities">能力</a></li>
+          <li><a href="#projects">项目</a></li>
+        </ul>
+      </div>
+    </nav>
 
-  <!-- Nav -->
-  <nav id="nav">
-    <div class="nav-inner">
-      <div class="nav-logo">周志阳</div>
-      <ul class="nav-links">
-        <li><a href="#about">关于</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#experience">经历</a></li>
-        <li><a href="#projects">项目</a></li>
-	        <li><a href="#works">作品</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section id="hero">
-    <div class="container">
+    <header class="hero container" id="profile">
       <div class="hero-layout">
-
-        <div class="hero-left">
-          <div class="hero-eyebrow">Java 后端工程师</div>
-          <h1 class="hero-name">周志阳</h1>
-          <p class="hero-subtitle">5 年深耕企业级后端系统，专注高并发架构与知识图谱应用</p>
-
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <div class="hero-meta-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-              </div>
-              <span><a href="mailto:zhouyy8029@163.com">zhouyy8029@163.com</a></span>
-            </div>
-            <div class="hero-meta-item">
-              <div class="hero-meta-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <span>155 5653 9591</span>
-            </div>
-            <div class="hero-meta-item">
-              <div class="hero-meta-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <span>江苏南京</span>
-            </div>
-            <div class="hero-meta-item">
-              <div class="hero-meta-icon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <span>已婚 · 28 岁</span>
-            </div>
-          </div>
-
-          <div class="hero-tags">
-            <span class="hero-tag">Java</span>
-            <span class="hero-tag accent">Spring Cloud</span>
-            <span class="hero-tag">MySQL</span>
-            <span class="hero-tag">Redis</span>
-            <span class="hero-tag accent">Neo4j</span>
-            <span class="hero-tag">Elasticsearch</span>
-            <span class="hero-tag">Kafka</span>
-            <span class="hero-tag">NLP</span>
-          </div>
-
-          <div class="hero-links">
-            <a href="mailto:zhouyy8029@163.com" class="hero-link" title="邮箱">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-            </a>
-            <a href="tel:15556539591" class="hero-link" title="手机">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </a>
-          </div>
+        <div class="hero-copy reveal">
+          <p class="eyebrow">SENIOR BACKEND ENGINEER · FDE TRACK</p>
+          <h1>周志阳</h1>
+          <p class="hero-role">高级后端工程师｜FDE 方向</p>
+          <p class="hero-summary">近 8 年企业级软件研发经验，覆盖高并发后端、CargoWise 货代业务、日本海关报关，以及 Dify 工作流、Milvus RAG 与定制 Agent 开发。</p>
+          <ul class="contact-list">
+            <li><a href="mailto:zhouyy8029@163.com"><b>MAIL</b>zhouyy8029@163.com</a></li>
+            <li><a href="tel:15556539591"><b>TEL</b>155&nbsp;5653&nbsp;9591</a></li>
+            <li><span><b>BASE</b>江苏南京</span></li>
+          </ul>
         </div>
-
-        <div class="hero-avatar-wrap">
-          <div class="hero-avatar">
-            <img src="https://iot-coocaa.sgmwsales.com/4770c074-6120-4aa1-af27-56dfbfff63f1.jpg" alt="周志阳" />
-          </div>
-          <div class="hero-avatar-deco"></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">关于我</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text reveal reveal-d1">
-          <p>我叫周志阳，2018 年毕业于安徽中医药大学计算机科学与技术专业（统招一本）。毕业至今一直从事企业级后端开发工作，从初入职场到独立负责核心系统，积累了扎实的工程能力与系统设计思维。</p>
-          <p>擅长 <strong>Java / Spring Cloud</strong> 微服务架构，熟悉分布式、高并发场景下的中间件选型与性能调优。在<strong>知识图谱构建、NLP 应用开发、大数据计算</strong>方向有丰富实战经验，曾主导多个从 0 到 1 的技术项目建设。</p>
-        </div>
-        <div class="eval-box reveal reveal-d2">
-          <div class="eval-title">自我评价</div>
-          <div class="eval-text">
-            5 年 Java 后端开发经验，兼具扎实的技术功底与产品思维。具备独立完成需求分析、架构设计、核心编码、部署上线的全链路能力。具备良好的团队协作能力和沟通能力，乐于分享技术经验，追求代码可维护性与系统稳定性的平衡。
-          </div>
+        <div class="portrait-frame reveal">
+          <img class="hero-portrait" src="https://iot-coocaa.sgmwsales.com/4770c074-6120-4aa1-af27-56dfbfff63f1.jpg" alt="周志阳个人照片">
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title">技术栈</h2>
+      <div class="evidence-strip reveal">
+        <div><strong>近 8 年</strong><span>企业级软件研发</span></div>
+        <div><strong>Java + C#</strong><span>跨技术栈工程能力</span></div>
+        <div><strong>AI 原生应用</strong><span>项目开发经验</span></div>
       </div>
+    </header>
 
-      <div class="skills-grid">
-
-        <!-- 编程语言 -->
-        <div class="skill-card reveal reveal-d1">
-          <div class="skill-card-title">
-            <span class="icon">⌨</span>编程语言
-          </div>
-          <div class="skill-items">
-            <div class="skill-row">
-              <span class="skill-name">Java</span>
-              <span class="skill-level">精通</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 95%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Python</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 72%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">JavaScript</span>
-              <span class="skill-level">了解</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 55%"></div></div>
-            </div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Spring</span>
-            <span class="skill-tag">Spring MVC</span>
-            <span class="skill-tag">Servlet</span>
-            <span class="skill-tag">JVM</span>
-          </div>
+    <main>
+      <section class="resume-section container" aria-labelledby="about-title">
+        <div class="section-heading reveal">
+          <span class="section-index">01</span>
+          <h2 id="about-title">职业概览</h2>
         </div>
+        <p class="profile-copy reveal">计算机科学与技术本科，近 8 年企业级软件研发经验，长期从事 Java、C#、Python 后端与复杂业务系统开发。在小维 AI 项目中完成知识图谱、Dify 工作流和 Milvus 内部知识库 RAG 系统建设，并在慧咨内部工具中参与定制 Agent 开发。</p>
+      </section>
 
-        <!-- 关系型数据库 -->
-        <div class="skill-card reveal reveal-d2">
-          <div class="skill-card-title">
-            <span class="icon">⊞</span>关系型数据库
-          </div>
-          <div class="skill-items">
-            <div class="skill-row">
-              <span class="skill-name">MySQL</span>
-              <span class="skill-level">精通</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 92%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Oracle</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 80%"></div></div>
-            </div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">MyCat</span>
-            <span class="skill-tag">ShardingJDBC</span>
-            <span class="skill-tag">读写分离</span>
-            <span class="skill-tag">分库分表</span>
-            <span class="skill-tag">索引优化</span>
-          </div>
+      <section class="resume-section container" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading reveal">
+          <span class="section-index">02</span>
+          <h2 id="experience-title">工作经历</h2>
         </div>
-
-        <!-- 缓存与消息队列 -->
-        <div class="skill-card reveal reveal-d3">
-          <div class="skill-card-title">
-            <span class="icon">⚡</span>缓存与消息队列
-          </div>
-          <div class="skill-items">
-            <div class="skill-row">
-              <span class="skill-name">Redis</span>
-              <span class="skill-level">精通</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 90%"></div></div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-date"><time datetime="2024-07-02">2024.07.02</time><span>—</span><time datetime="2026-05-27">2026.05.27</time></div>
+            <div class="timeline-body">
+              <h3>慧咨环球（中国）信息技术有限公司南京分公司</h3>
+              <p class="timeline-role">Software Engineer · Development</p>
+              <ul>
+                <li>参与全球货代软件 CargoWise 的功能开发，使用 C# 与公司内部桌面应用框架交付企业级业务功能。</li>
+                <li>负责日本海关报关业务相关模块，理解并实现复杂业务规则，参与问题定位与版本维护。</li>
+                <li>维护和升级公司内部工具软件，持续改善存量系统的稳定性与可维护性。</li>
+                <li>研读 Claude Code Agent 相关实现与运行机制，结合公司内部研发流程，在内部项目工具中参与定制 Agent 开发与应用。</li>
+              </ul>
             </div>
-            <div class="skill-row">
-              <span class="skill-name">Kafka</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 82%"></div></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-date"><time datetime="2021-07-12">2021.07.12</time><span>—</span><time datetime="2024-06-28">2024.06.28</time></div>
+            <div class="timeline-body">
+              <h3>深圳市酷开网络科技股份有限公司</h3>
+              <p class="timeline-role">后端开发工程师 · 智屏拓展事业部</p>
+              <ul>
+                <li>负责五菱灯语屏核心业务开发、服务端部署维护与项目框架设计。</li>
+                <li>参与创维小维 AI 云平台核心功能迭代，完成知识图谱项目开发，并积累 Dify 工作流、Milvus 向量数据库与内部知识库 RAG 系统的搭建使用经验。</li>
+                <li>负责酷开智慧幼儿园项目后台业务模型设计与开发实现。</li>
+              </ul>
             </div>
-            <div class="skill-row">
-              <span class="skill-name">RabbitMQ</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 75%"></div></div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-date"><time datetime="2019-04">2019.04</time><span>—</span><time datetime="2021-03">2021.03</time></div>
+            <div class="timeline-body">
+              <h3>南京运享通信息科技有限公司</h3>
+              <p class="timeline-role">Java 开发工程师 · 产品研发部</p>
+              <ul>
+                <li>负责 XPORTS 场馆后台、微信公众号与小程序等系统接口开发。</li>
+                <li>参与后端架构设计、前端布局确认、任务协作和部署上线。</li>
+                <li>重构部分业务模块，改善代码可读性与运行性能。</li>
+              </ul>
             </div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">集群部署</span>
-            <span class="skill-tag">Canal</span>
-            <span class="skill-tag">延迟队列</span>
-            <span class="skill-tag">分布式锁</span>
-          </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-date"><time datetime="2018-06">2018.06</time><span>—</span><time datetime="2019-03">2019.03</time></div>
+            <div class="timeline-body">
+              <h3>北京思特奇信息技术股份有限公司</h3>
+              <p class="timeline-role">Java 开发工程师 · 产品研发部</p>
+              <ul>
+                <li>参与安徽移动 NGBOSS 系统 Java 化项目，负责业务模块编码与测试。</li>
+              </ul>
+            </div>
+          </article>
         </div>
+      </section>
 
-        <!-- 框架与服务 -->
-        <div class="skill-card reveal reveal-d4">
-          <div class="skill-card-title">
-            <span class="icon">☁</span>框架与服务
-          </div>
-          <div class="skill-items">
-            <div class="skill-row">
-              <span class="skill-name">Spring Security</span>
-              <span class="skill-level">精通</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 88%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Elasticsearch</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 80%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Neo4j</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 78%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Nginx</span>
-              <span class="skill-level">熟练</span>
-              <div class="skill-bar-wrap"><div class="skill-bar-fill" style="--w: 76%"></div></div>
-            </div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">微服务</span>
-            <span class="skill-tag">HBase</span>
-            <span class="skill-tag">Django</span>
-            <span class="skill-tag">NLP</span>
-            <span class="skill-tag">WebSocket</span>
-            <span class="skill-tag">FFmpeg</span>
-          </div>
+      <section class="resume-section container" id="capabilities" aria-labelledby="capabilities-title">
+        <div class="section-heading reveal">
+          <span class="section-index">03</span>
+          <h2 id="capabilities-title">能力矩阵</h2>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EXPERIENCE ===== -->
-  <section id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">03</span>
-        <h2 class="section-title">工作经历</h2>
-      </div>
-
-      <div class="exp-list">
-
-        <!-- 酷开 2021.07 至今 -->
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-time">2021.07<br>—<br>至今</div>
-            <div class="exp-duration">约 4 年</div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-company">深圳市酷开网络科技股份有限公司</div>
-              <div class="exp-role">后端开发工程师 · 核心开发者</div>
-              <div class="exp-dept">智屏拓展事业部</div>
-            </div>
-            <ul class="exp-bullets">
-              <li>主导五菱灯语屏项目核心业务开发与服务端部署维护，项目框架从 0 到 1 独立设计</li>
-              <li>负责创维小维 AI 语音平台业务线的核心功能迭代开发及大数据看板维护</li>
-              <li>主导酷开智慧幼儿园项目后台业务模型设计与开发实现</li>
-            </ul>
-          </div>
+        <div class="capability-grid">
+          <article class="capability-group reveal">
+            <h3>后端与业务系统</h3>
+            <p>Java · Spring · Spring Cloud · C# · Python · WebSocket · REST API</p>
+          </article>
+          <article class="capability-group reveal">
+            <h3>数据、部署与前端</h3>
+            <p>MySQL · PostgreSQL · Redis · Elasticsearch · Docker · Linux · Nginx · Vue · TypeScript</p>
+          </article>
+          <article class="capability-group reveal">
+            <h3>AI 原生应用相关技术</h3>
+            <p>Dify · LangChain · LangGraph · Milvus · Neo4j · RAG 调优</p>
+          </article>
+          <article class="capability-group reveal">
+            <h3>Code Agent 技术</h3>
+            <p>上下文管理 · 记忆系统 · Hooks 系统 · MCP 协议接入 · Skill 系统 · 多 Agent 协同 · Pi 框架定制开发</p>
+          </article>
         </div>
+      </section>
 
-        <!-- 中电鸿信 2021.04–2021.07 -->
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-time">2021.04<br>—<br>2021.07</div>
-            <div class="exp-duration">4 个月</div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-company">中电鸿信科技有限公司</div>
-              <div class="exp-role">Java 研发工程师</div>
-              <div class="exp-dept">产品研发部</div>
-            </div>
-            <ul class="exp-bullets">
-              <li>负责短信群发项目架构设计与核心业务开发，实现日均百万级消息发送</li>
-              <li>负责项目的上线部署以及技术文档撰写</li>
-            </ul>
-          </div>
+      <section class="resume-section container" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading reveal">
+          <span class="section-index">04</span>
+          <h2 id="projects-title">核心项目</h2>
         </div>
-
-        <!-- 运享通 2019.04–2021.03 -->
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-time">2019.04<br>—<br>2021.03</div>
-            <div class="exp-duration">约 2 年</div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-company">南京运享通信息科技有限公司</div>
-              <div class="exp-role">Java 开发工程师 · 业务线技术负责人</div>
-              <div class="exp-dept">产品研发部</div>
-            </div>
-            <ul class="exp-bullets">
-              <li>主导 XPORTS 系统场馆后台、微信公众号、场馆小程序等系统接口开发</li>
-              <li>负责后端功能架构设计、前端布局设计确立及项目部署上线</li>
-              <li>负责技术方案设计与任务派发，带领团队完成核心模块交付</li>
-              <li>重构优化部分模块代码，提升系统可读性与运行性能</li>
-            </ul>
-          </div>
+        <div class="project-grid">
+          <article class="project-item reveal">
+            <p class="project-index">01 / ENTERPRISE SOFTWARE</p>
+            <h3>CargoWise 日本海关报关模块</h3>
+            <p>面向国际货代业务的企业级桌面软件模块，负责日本海关报关相关功能开发及内部工具维护升级。</p>
+            <p class="project-evidence">重点：复杂业务规则理解、存量系统维护、问题定位与版本演进。</p>
+            <ul class="tech-list" aria-label="CargoWise 项目技术栈"><li>C#</li><li>CargoWise</li><li>Custom Framework</li></ul>
+          </article>
+          <article class="project-item reveal">
+            <p class="project-index">02 / CONNECTED DEVICE</p>
+            <h3>五菱灯语屏后台</h3>
+            <p>为车机、App 与设备提供云端接口，支撑设备通信、内容下发和状态管理。</p>
+            <p class="project-evidence">负责项目框架设计；基于 WebSocket 支撑双向通信，并使用 FFmpeg 处理媒体资源。</p>
+            <ul class="tech-list" aria-label="五菱灯语屏项目技术栈"><li>Spring Security</li><li>WebSocket</li><li>Redis</li><li>FFmpeg</li></ul>
+          </article>
+          <article class="project-item reveal">
+            <p class="project-index">03 / AI PLATFORM</p>
+            <h3>创维小维 AI 云平台</h3>
+            <p>为电视端小维 AI 应用提供语音检索、数据看板、知识图谱问答、工作流编排与内部知识库能力。</p>
+            <p class="project-evidence">完成知识图谱项目开发；使用 Dify 搭建业务工作流；基于 Milvus 向量数据库搭建和使用内部知识库 RAG 系统。</p>
+            <ul class="tech-list" aria-label="小维 AI 项目技术栈"><li>Java</li><li>Dify</li><li>Milvus</li><li>RAG</li><li>Neo4j</li><li>Elasticsearch</li></ul>
+          </article>
+          <article class="project-item reveal">
+            <p class="project-index">04 / MESSAGING</p>
+            <h3>短信群发系统</h3>
+            <p>面向江苏电信的批量短信发送系统，支持任务调度、优先级处理与发送链路管理。</p>
+            <p class="project-evidence">基于 SMGP、Netty 与线程池实现网关通信和发送处理。</p>
+            <ul class="tech-list" aria-label="短信群发项目技术栈"><li>Netty</li><li>Kafka</li><li>Redis</li><li>xxl-Job</li><li>Elasticsearch</li></ul>
+          </article>
+          <article class="project-item reveal">
+            <p class="project-index">05 / SAAS</p>
+            <h3>XPORTS 智慧场馆 SaaS 平台</h3>
+            <p>覆盖场馆后台、卡务、场地、商城和培训等业务模块，服务微信公众号与小程序场景。</p>
+            <p class="project-evidence">参与业务架构、排课预约、商城与微信支付链路开发及部署上线。</p>
+            <ul class="tech-list" aria-label="XPORTS 项目技术栈"><li>Spring Security</li><li>Redis</li><li>RabbitMQ</li><li>Vue</li><li>微信支付</li></ul>
+          </article>
         </div>
+      </section>
 
-        <!-- 思特奇 2018.06–2019.03 -->
-        <div class="exp-item reveal">
-          <div class="exp-time-col">
-            <div class="exp-time">2018.06<br>—<br>2019.03</div>
-            <div class="exp-duration">10 个月</div>
-          </div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-company">思特奇信息技术股份有限公司</div>
-              <div class="exp-role">Java 开发工程师</div>
-              <div class="exp-dept">产品研发部</div>
-            </div>
-            <ul class="exp-bullets">
-              <li>参与安徽移动 NGBOSS 系统 JAVA 化项目开发，负责业务模块编码与测试</li>
-            </ul>
-          </div>
-        </div>
+    </main>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">核心项目</h2>
-      </div>
-
-      <div class="proj-grid">
-
-        <!-- 五菱灯语屏 -->
-        <div class="proj-card reveal">
-          <div class="proj-top">
-            <div class="proj-num">01</div>
-            <div class="proj-name">五菱灯语屏后台<span class="proj-badge">核心负责人</span></div>
-            <div class="proj-desc">为五菱灯语屏的车机、App 及设备提供完整的云端接口服务，支撑设备通信、内容下发与状态管理。</div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-highlight-label">技术难点</div>
-            <div class="proj-highlight-text">项目框架从 0 到 1 独立设计；基于 WebSocket 为 App 和设备提供稳定双向通信通道，支持高并发长连接；FFmpeg 处理媒体资源。</div>
-            <div class="proj-tech">
-              <span class="proj-tech-tag">Spring Security</span>
-              <span class="proj-tech-tag">WebSocket</span>
-              <span class="proj-tech-tag">Redis</span>
-              <span class="proj-tech-tag">FFmpeg</span>
-              <span class="proj-tech-tag">SSM</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 创维小维 AI -->
-        <div class="proj-card reveal reveal-d1">
-          <div class="proj-top">
-            <div class="proj-num">02</div>
-            <div class="proj-name">创维小维 AI 云平台</div>
-            <div class="proj-desc">为创维电视小维 AI 应用提供云平台服务支撑，涵盖语音检索、数据看板、知识图谱问答及 AI 对话等功能。</div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-highlight-label">核心成果</div>
-            <div class="proj-highlight-text">基于 GPT-3.5 开发企业内部 AI 对话工具；基于 Neo4j 构建知识图谱实现半自动化图谱平台；ES 全文检索优化影视搜索体验；Elasticsearch + HBase 实现大数据实时计算看板。</div>
-            <div class="proj-tech">
-              <span class="proj-tech-tag">SSM</span>
-              <span class="proj-tech-tag">Django</span>
-              <span class="proj-tech-tag">Neo4j</span>
-              <span class="proj-tech-tag">HBase</span>
-              <span class="proj-tech-tag">Elasticsearch</span>
-              <span class="proj-tech-tag">NLP</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 短信群发 -->
-        <div class="proj-card reveal reveal-d2">
-          <div class="proj-top">
-            <div class="proj-num">03</div>
-            <div class="proj-name">短信群发系统</div>
-            <div class="proj-desc">为江苏电信提供短信群发业务系统支撑，支持高并发大批量短信发送与优先级调度。</div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-highlight-label">技术难点</div>
-            <div class="proj-highlight-text">自研 SMGP 协议实现与电信网关通信；基于 Netty + 线程池实现高效发送，单机性能 ≥ 2000 条/秒；任务优先级可动态调整，支持插入紧急通知短信。</div>
-            <div class="proj-tech">
-              <span class="proj-tech-tag">Netty</span>
-              <span class="proj-tech-tag">Kafka</span>
-              <span class="proj-tech-tag">Redis</span>
-              <span class="proj-tech-tag">xxl-Job</span>
-              <span class="proj-tech-tag">Elasticsearch</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- XPORTS -->
-        <div class="proj-card reveal reveal-d3">
-          <div class="proj-top">
-            <div class="proj-num">04</div>
-            <div class="proj-name">XPORTS 智慧场馆 SaaS 平台<span class="proj-badge">项目负责人</span></div>
-            <div class="proj-desc">为体育场馆提供日常核心业务电子化服务，涵盖后台管理、卡务、场地、商城、培训等全链路模块。</div>
-          </div>
-          <div class="proj-body">
-            <div class="proj-highlight-label">技术难点</div>
-            <div class="proj-highlight-text">设计秒杀商城架构保障高可用与支付一致性；为学员和老师设计高效时间管理系统用于排课预约，兼顾查询性能与内存占用；微信支付、授权与退款全链路打通。</div>
-            <div class="proj-tech">
-              <span class="proj-tech-tag">Spring Security</span>
-              <span class="proj-tech-tag">Redis</span>
-              <span class="proj-tech-tag">RabbitMQ</span>
-              <span class="proj-tech-tag">Vue</span>
-              <span class="proj-tech-tag">Elasticsearch</span>
-              <span class="proj-tech-tag">微信支付</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WORKS ===== -->
-  <section id="works">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">05</span>
-        <h2 class="section-title">个人作品</h2>
-      </div>
-      <div class="works-grid">
-        <a href="https://github.com/jililuo" target="_blank" rel="noopener" class="work-card reveal">
-          <div class="work-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
-            </svg>
-          </div>
-          <div class="work-name">GitHub</div>
-          <div class="work-desc">关注我，获取更多开源项目与技术分享</div>
-          <div class="work-link">
-            github.com/jililuo
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 15 3"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
+    <footer class="container">
       <div class="footer-inner">
-        <div class="footer-left">
-          &copy; 2025 周志阳 &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
-          <a href="mailto:zhouyy8029@163.com">zhouyy8029@163.com</a>
-        </div>
-        <div class="footer-right">
-          <a href="mailto:zhouyy8029@163.com" class="footer-icon" title="邮箱">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-          </a>
-          <a href="tel:15556539591" class="footer-icon" title="手机">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </a>
-        </div>
+        <span>© <span id="current-year">2026</span> 周志阳</span>
+        <span><a href="mailto:zhouyy8029@163.com">zhouyy8029@163.com</a> · 江苏南京</span>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <script>
-    // ===== REVEAL =====
-    const reveals = document.querySelectorAll('.reveal');
-    const skillFills = document.querySelectorAll('.skill-bar-fill');
-    let skillDone = false;
+    const menuButton = document.querySelector("[data-menu-button]");
+    const navLinks = document.getElementById("primary-nav");
+    const sectionLinks = [...document.querySelectorAll(".nav-links a")];
+    const sections = [...document.querySelectorAll("header[id], section[id]")];
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          if (!skillDone && e.target.closest('#skills')) {
-            skillDone = true;
-            setTimeout(() => skillFills.forEach(f => f.classList.add('animated')), 200);
+    menuButton?.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!open));
+      menuButton.setAttribute("aria-label", open ? "打开导航" : "关闭导航");
+      navLinks.classList.toggle("is-open", !open);
+      document.body.classList.toggle("menu-open", !open);
+    });
+
+    navLinks?.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuButton?.setAttribute("aria-expanded", "false");
+        menuButton?.setAttribute("aria-label", "打开导航");
+        navLinks.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+      }
+    });
+
+    if (reduceMotion) {
+      document.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
-        }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+    }
+
+    const setActiveSection = () => {
+      const offset = window.scrollY + 110;
+      let current = "profile";
+      sections.forEach((section) => {
+        if (section.offsetTop <= offset) current = section.id;
       });
-    }, { threshold: 0.1 });
+      sectionLinks.forEach((link) => {
+        const active = link.getAttribute("href") === "#" + current;
+        link.classList.toggle("active", active);
+        if (active) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    };
 
-    reveals.forEach(el => observer.observe(el));
-
-    // ===== NAV ACTIVE =====
-    const nav = document.getElementById('nav');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 30);
-      let cur = '';
-      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
-    }, { passive: true });
+    window.addEventListener("scroll", setActiveSection, { passive: true });
+    setActiveSection();
+    document.getElementById("current-year").textContent = String(new Date().getFullYear());
   </script>
 </body>
 </html>

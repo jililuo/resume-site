@@ -33,10 +33,11 @@
 
 ### AI 与 FDE 相关能力
 
-- Dify、LangChain、LangGraph、RAG：个人练习或原型，未生产落地
+- Dify 工作流、Milvus 向量数据库、内部知识库 RAG 与知识图谱：小维 AI 项目经验
+- LangChain、LangGraph：个人练习或原型
 - Docker、Linux、Nginx、MySQL/PostgreSQL、Vue/TypeScript：熟练
 - AI 协同工具：Claude Code、Codex、GitHub Copilot、Dify、OpenCode
-- 熟悉 Spec-driven Development，采用“需求澄清 → SPEC → Plan → Task → 实现 → 验证”的开发流程
+- 研读 Claude Code Agent 相关实现与运行机制，并在慧咨内部项目工具中参与基于内部流程的定制 Agent 开发
 - 无医院项目驻场、HIS/EMR/LIS 对接或医疗数据处理经验
 - 无客户需求访谈、现场联调、私有化部署、用户培训和验收交付经历
 
@@ -59,13 +60,12 @@
 页面按招聘者的扫描顺序组织：
 
 1. 首屏：姓名、目标职位、定位摘要、公开联系方式、头像。
-2. 核心数据：近 8 年研发、Java + C#、AI Agent 原型、Spec-driven Development。
+2. 核心数据：近 8 年研发、Java + C#、AI 工程项目与原型经验。
 3. 职业概览：教育和工程背景、FDE 可迁移能力。
 4. 工作经历：慧咨环球置顶，其次为酷开、中电鸿信、南京运享通和思特奇。
-5. 能力矩阵：后端与业务系统、数据与部署、AI 应用原型、AI 协同工程。
+5. 能力矩阵：后端与业务系统、数据与部署、AI 应用工程、Agent 工程与 AI 协同。
 6. 核心项目：CargoWise 日本海关模块置顶，其次为五菱灯语屏、小维 AI、短信群发和 XPORTS。
-7. 个人作品：GitHub 与可公开展示的 AI 原型入口。
-8. 页脚：邮箱、电话、GitHub 和动态年份。
+7. 页脚：邮箱、电话和动态年份。
 
 旧页面中的主观技能百分比全部移除，改为技术名称、使用场景和项目证据。
 
@@ -77,7 +77,7 @@
 
 ### AI 能力
 
-Dify、LangChain、LangGraph 与 RAG 必须附带“个人原型实践”标签。可以描述掌握 Agent 编排、知识库构建、Prompt、Function Calling 等练习内容，但在没有具体原型信息前不虚构医疗用途、数据规模、准确率或生产指标。
+Dify 工作流、Milvus 内部知识库 RAG 与知识图谱按小维 AI 项目经验呈现；LangChain、LangGraph 等个人练习按原型范围表达。不得虚构医疗用途、数据规模、准确率或生产指标。
 
 ### FDE 可迁移能力
 
@@ -87,7 +87,7 @@ Dify、LangChain、LangGraph 与 RAG 必须附带“个人原型实践”标签�
 - 企业级存量系统维护升级
 - Java、C#、Python 跨技术栈适应
 - 数据库、Linux、Docker、Nginx 与前端能力
-- Spec 驱动和 Coding Agent 协同开发
+- Claude Code Agent 机制研究、内部定制 Agent 开发和 Coding Agent 协同
 
 不使用“医疗交付专家”“医院系统集成经验”等表述。
 
@@ -143,7 +143,7 @@ Dify、LangChain、LangGraph 与 RAG 必须附带“个人原型实践”标签�
 - 慧咨环球经历和 CargoWise 项目置顶
 - 酷开结束日期为 2024-06-28
 - 页面不再出现“酷开至今”“5 年经验”“28 岁”等过时内容
-- AI Agent / RAG 能力明确标注个人原型
+- Dify、Milvus RAG 与知识图谱准确标注为项目经验，个人原型范围表达清楚
 - 页面不宣称医疗或医院交付经验
 - 页面和仓库不包含身份证号、工号、证明图片或签名
 - 桌面和手机视口无内容重叠、溢出或关键内容隐藏

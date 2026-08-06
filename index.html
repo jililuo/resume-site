@@ -231,30 +231,11 @@
     }
     .section-index { color: #aaa69d; font-family: var(--mono); font-size: .68rem; }
     .section-heading h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.35; }
-    .profile-grid { display: grid; grid-template-columns: 1.3fr .9fr; gap: 42px; }
-    .profile-copy p { color: var(--ink-soft); font-size: .88rem; line-height: 1.95; }
-    .profile-copy p + p { margin-top: 15px; }
-    .transfer-panel {
-      align-self: start;
-      padding: 20px 22px;
-      background: var(--paper-deep);
-      border-left: 3px solid var(--accent);
-    }
-    .transfer-panel h3 { font-family: var(--serif); font-size: .91rem; }
-    .transfer-list { margin-top: 11px; list-style: none; padding: 0; }
-    .transfer-list li {
-      position: relative;
-      padding-left: 17px;
+    .profile-copy {
+      max-width: 820px;
       color: var(--ink-soft);
-      font-size: .78rem;
-      line-height: 1.8;
-    }
-    .transfer-list li::before {
-      position: absolute;
-      left: 0;
-      color: var(--evidence);
-      font-family: var(--mono);
-      content: "+";
+      font-size: .88rem;
+      line-height: 1.95;
     }
 
     .timeline { display: grid; }
@@ -319,16 +300,6 @@
       font-size: .69rem;
       line-height: 1.95;
       overflow-wrap: anywhere;
-    }
-    .scope-label {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 3px 7px;
-      border: 1px solid rgba(185, 61, 49, .35);
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .57rem;
-      font-weight: 600;
     }
     .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
     .project-item {
@@ -409,11 +380,9 @@
       .resume-section { padding-block: 46px; }
       .section-heading { grid-template-columns: 36px 1fr; gap: 12px; margin-bottom: 27px; }
       .section-heading h2 { font-size: 1.32rem; }
-      .profile-grid,
       .timeline-item,
       .capability-grid,
       .project-grid { grid-template-columns: 1fr; }
-      .profile-grid { gap: 24px; }
       .timeline-item { gap: 9px; }
       .timeline-date { flex-direction: row; align-items: center; gap: 6px; }
       .capability-group { min-height: auto; }
@@ -471,7 +440,7 @@
           <p class="eyebrow">SENIOR BACKEND ENGINEER · FDE TRACK</p>
           <h1>周志阳</h1>
           <p class="hero-role">高级后端工程师｜FDE 方向</p>
-          <p class="hero-summary">近 8 年企业级软件研发经验，覆盖高并发后端、CargoWise 货代业务与日本海关报关模块。正在将复杂业务系统经验延伸至 AI Agent、RAG 与前置交付场景。</p>
+          <p class="hero-summary">近 8 年企业级软件研发经验，覆盖高并发后端、CargoWise 货代业务、日本海关报关，以及 Dify 工作流、Milvus RAG 与定制 Agent 开发。</p>
           <ul class="contact-list">
             <li><a href="mailto:zhouyy8029@163.com"><b>MAIL</b>zhouyy8029@163.com</a></li>
             <li><a href="tel:15556539591"><b>TEL</b>155&nbsp;5653&nbsp;9591</a></li>
@@ -485,7 +454,7 @@
       <div class="evidence-strip reveal">
         <div><strong>近 8 年</strong><span>企业级软件研发</span></div>
         <div><strong>Java + C#</strong><span>跨技术栈工程能力</span></div>
-        <div><strong>AI 工程</strong><span>项目与原型实践</span></div>
+        <div><strong>AI 原生应用</strong><span>项目开发经验</span></div>
       </div>
     </header>
 
@@ -495,21 +464,7 @@
           <span class="section-index">01</span>
           <h2 id="about-title">职业概览</h2>
         </div>
-        <div class="profile-grid">
-          <div class="profile-copy reveal">
-            <p>计算机科学与技术本科，2018 年起持续从事企业级软件研发。具备从需求理解、方案设计、核心编码到部署维护的完整工程视角，熟悉 Java 后端生态，并拥有 C# / WinForm 企业软件研发经验。</p>
-            <p>关注 AI 应用工程化，在小维 AI 项目中积累知识图谱、Dify 工作流与 Milvus 内部知识库 RAG 系统经验，并围绕 LangChain、LangGraph 持续进行个人原型实践。希望将复杂业务系统开发、问题定位和跨技术栈协作能力延伸到 FDE 与 AI 应用交付场景。</p>
-          </div>
-          <aside class="transfer-panel reveal" aria-labelledby="transfer-title">
-            <h3 id="transfer-title">FDE 可迁移能力</h3>
-            <ul class="transfer-list">
-              <li>复杂行业业务规则理解与实现</li>
-              <li>企业级存量系统维护升级</li>
-              <li>Java、C#、Python 跨技术栈适应</li>
-              <li>Claude Code Agent 机制研究与内部定制 Agent 开发</li>
-            </ul>
-          </aside>
-        </div>
+        <p class="profile-copy reveal">计算机科学与技术本科，近 8 年企业级软件研发经验，长期从事 Java、C#、Python 后端与复杂业务系统开发。在小维 AI 项目中完成知识图谱、Dify 工作流和 Milvus 内部知识库 RAG 系统建设，并在慧咨内部工具中参与定制 Agent 开发。</p>
       </section>
 
       <section class="resume-section container" id="experience" aria-labelledby="experience-title">
@@ -524,7 +479,7 @@
               <h3>慧咨环球（中国）信息技术有限公司南京分公司</h3>
               <p class="timeline-role">Software Engineer · Development</p>
               <ul>
-                <li>参与全球货代软件 CargoWise 的功能开发，使用 C# 与公司内部 WinForm 框架交付企业级桌面系统功能。</li>
+                <li>参与全球货代软件 CargoWise 的功能开发，使用 C# 与公司内部桌面应用框架交付企业级业务功能。</li>
                 <li>负责日本海关报关业务相关模块，理解并实现复杂业务规则，参与问题定位与版本维护。</li>
                 <li>维护和升级公司内部工具软件，持续改善存量系统的稳定性与可维护性。</li>
                 <li>研读 Claude Code Agent 相关实现与运行机制，结合公司内部研发流程，在内部项目工具中参与定制 Agent 开发与应用。</li>
@@ -576,20 +531,19 @@
         <div class="capability-grid">
           <article class="capability-group reveal">
             <h3>后端与业务系统</h3>
-            <p>Java · Spring · Spring Cloud · C# · WinForm · Python · WebSocket · REST API</p>
+            <p>Java · Spring · Spring Cloud · C# · Python · WebSocket · REST API</p>
           </article>
           <article class="capability-group reveal">
             <h3>数据、部署与前端</h3>
             <p>MySQL · PostgreSQL · Redis · Elasticsearch · Docker · Linux · Nginx · Vue · TypeScript</p>
           </article>
           <article class="capability-group reveal">
-            <h3>AI 应用工程</h3>
-            <p>Dify · LangChain · LangGraph · RAG · Milvus · Neo4j · Prompt Engineering · Function Calling</p>
-            <span class="scope-label">PROJECT + PROTOTYPE</span>
+            <h3>AI 原生应用相关技术</h3>
+            <p>Dify · LangChain · LangGraph · Milvus · Neo4j · RAG 调优</p>
           </article>
           <article class="capability-group reveal">
-            <h3>Agent 工程与 AI 协同</h3>
-            <p>Claude Code Agent 机制 · 定制 Agent 开发 · Claude Code · Codex · GitHub Copilot · OpenCode</p>
+            <h3>Code Agent 技术</h3>
+            <p>上下文管理 · 记忆系统 · Hooks 系统 · MCP 协议接入 · Skill 系统 · 多 Agent 协同 · Pi 框架定制开发</p>
           </article>
         </div>
       </section>
@@ -605,7 +559,7 @@
             <h3>CargoWise 日本海关报关模块</h3>
             <p>面向国际货代业务的企业级桌面软件模块，负责日本海关报关相关功能开发及内部工具维护升级。</p>
             <p class="project-evidence">重点：复杂业务规则理解、存量系统维护、问题定位与版本演进。</p>
-            <ul class="tech-list" aria-label="CargoWise 项目技术栈"><li>C#</li><li>WinForm</li><li>Internal Framework</li><li>CargoWise</li></ul>
+            <ul class="tech-list" aria-label="CargoWise 项目技术栈"><li>C#</li><li>CargoWise</li><li>Custom Framework</li></ul>
           </article>
           <article class="project-item reveal">
             <p class="project-index">02 / CONNECTED DEVICE</p>

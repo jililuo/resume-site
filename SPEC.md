@@ -10,8 +10,8 @@
 - Java、C#、Python 跨技术栈能力
 - CargoWise 货代软件与日本海关报关业务经验
 - 高并发后端、知识图谱、检索与企业系统维护经验
-- Dify、LangChain、LangGraph、RAG 个人原型实践
-- Spec-driven Development 与 Coding Agent 协同开发能力
+- Dify 工作流、Milvus 向量数据库、内部知识库 RAG 与知识图谱项目经验
+- Claude Code Agent 机制研究、内部定制 Agent 开发与 Coding Agent 协同能力
 
 页面不得把个人原型描述为生产项目，不得声称拥有医疗行业、医院驻场、HIS/EMR/LIS 对接或私有化交付经验。
 
@@ -23,7 +23,7 @@
 - 英文眉题：SENIOR BACKEND ENGINEER · FDE TRACK
 - 核心定位：近 8 年企业级软件研发经验，正在将复杂业务系统经验延伸至 AI Agent、RAG 与前置交付场景
 - 地点：江苏南京
-- AI 原型必须显示 PERSONAL PROTOTYPE 或 NON-PRODUCTION
+- AI 能力按项目经验与个人原型如实区分
 
 不展示年龄和婚姻状况。
 
@@ -38,8 +38,7 @@
 5. 工作经历
 6. 能力矩阵
 7. 核心项目
-8. 实践与作品
-9. 联系方式与版权
+8. 联系方式与版权
 
 导航锚点为：
 
@@ -47,7 +46,6 @@
 - #experience
 - #capabilities
 - #projects
-- #works
 
 ## 4. 工作经历规范
 
@@ -62,6 +60,7 @@
 - 技术：C#、公司内部 WinForm 框架
 - 业务：日本海关报关模块
 - 职责：功能开发、业务规则实现、问题定位、版本维护、内部工具维护升级
+- Agent 实践：研读 Claude Code Agent 相关实现与运行机制，结合内部研发流程参与定制 Agent 开发与应用
 
 ### 深圳市酷开网络科技股份有限公司
 
@@ -83,19 +82,15 @@ Java、Spring、Spring Cloud、C#、WinForm、Python、WebSocket、REST API。
 
 MySQL、PostgreSQL、Redis、Elasticsearch、Docker、Linux、Nginx、Vue、TypeScript。
 
-### AI 应用原型
+### AI 应用工程
 
-Dify、LangChain、LangGraph、RAG、Prompt Engineering、Function Calling。
+Dify、LangChain、LangGraph、RAG、Milvus、Neo4j、Prompt Engineering、Function Calling。
 
-必须显示个人原型范围标签。
+其中 Dify 工作流、Milvus 内部知识库 RAG 与知识图谱属于小维 AI 项目经验；其他能力按实际项目或个人原型如实表达。
 
-### AI 协同工程
+### Agent 工程与 AI 协同
 
-Spec-driven Development、Claude Code、Codex、GitHub Copilot、OpenCode。
-
-开发流程表达为：
-
-需求澄清 → SPEC → Plan → Task → 实现 → 验证
+Claude Code Agent 机制、内部定制 Agent 开发、Claude Code、Codex、GitHub Copilot、OpenCode。
 
 ## 6. 核心项目
 
@@ -213,11 +208,11 @@ Spec-driven Development、Claude Code、Codex、GitHub Copilot、OpenCode。
 - 慧咨环球经历和 CargoWise 项目置顶
 - 酷开结束日期为 2024-06-28
 - 不出现旧的 5 年经验、年龄、婚姻或“酷开至今”
-- AI 能力明确标注个人原型范围
+- AI 项目经验与个人原型范围表达准确
 - 不出现医疗或医院交付经验声明
 - 不包含敏感身份或证明信息
 - 桌面、平板和手机无重叠、裁切或横向溢出
-- 移动导航、锚点、邮箱、电话和 GitHub 链接有效
+- 移动导航、锚点、邮箱和电话链接有效
 - 打印预览内容完整、对比清晰、分页合理
 - 浏览器控制台无错误
 - GitHub Pages 可零构建发布

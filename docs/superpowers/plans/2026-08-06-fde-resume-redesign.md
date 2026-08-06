@@ -38,7 +38,7 @@ Expected: matches for the old title, experience count, Coolkai end state, age, a
 Run:
 
 ```powershell
-rg -n "身份证|身份证号码|工号|劳动合同|解除/终止|342626|CC1535" .
+rg -n "身份证|身份证号码|工号|劳动合同|解除/终止" .
 ```
 
 Expected: no matches in tracked repository content.
@@ -448,7 +448,7 @@ git commit -m "docs: align resume specification and print behavior"
 Run:
 
 ```powershell
-rg -n "5 年|至今|28 岁|已婚|身份证|身份证号码|工号|劳动合同|342626|CC1535" index.html SPEC.md docs
+rg -n "5 年|至今|28 岁|已婚|身份证|身份证号码|工号|劳动合同" index.html SPEC.md docs
 ```
 
 Expected: no matches.

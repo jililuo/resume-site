@@ -98,6 +98,30 @@
     }
     .nav-links a:hover,
     .nav-links a.active { color: var(--accent); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+    .export-button {
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .66rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color .2s ease, color .2s ease;
+    }
+    .export-button:hover,
+    .export-button:focus-visible {
+      background: var(--accent);
+      color: #fff;
+    }
     .menu-button {
       display: none;
       width: 42px;
@@ -347,6 +371,8 @@
       body { background: var(--paper); }
       .page-shell { margin: 0; border: 0; box-shadow: none; }
       .container, .nav-inner { padding-inline: 22px; }
+      .nav-inner { gap: 10px; }
+      .nav-actions { gap: 6px; }
       .menu-button { display: block; }
       .nav-links {
         position: absolute;
@@ -389,6 +415,8 @@
       .footer-inner { flex-direction: column; }
     }
     @media (max-width: 420px) {
+      .nav-brand span { display: none; }
+      .export-button { min-height: 32px; padding: 6px 9px; font-size: .61rem; }
       .hero-layout { grid-template-columns: 1fr; }
       .portrait-frame { order: -1; margin-top: 0; width: 82px; }
       .hero-portrait { width: 82px; height: 102px; }
@@ -402,20 +430,62 @@
       .reveal { opacity: 1; transform: none; }
     }
     @media print {
-      @page { size: A4; margin: 11mm; }
-      html { font-size: 10.5pt; }
+      @page { size: A4; margin: 7mm 8mm; }
+      html { font-size: 8pt; }
+      *, *::before, *::after { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
       body, .page-shell, #capabilities { background: #fff; }
+      body { color: #111; }
       .page-shell { width: auto; max-width: none; margin: 0; border: 0; box-shadow: none; }
       .site-nav { display: none !important; }
       .container { padding-inline: 0; }
-      .hero { padding-top: 0; }
-      .resume-section { padding-block: 9mm; }
-      .hero-portrait { filter: grayscale(100%); }
+      .hero { padding: 0 0 4mm; }
+      .hero-layout { grid-template-columns: minmax(0, 1fr) 22mm; gap: 5mm; align-items: center; }
+      .eyebrow { font-size: 5.8pt; }
+      .eyebrow::before { width: 7mm; height: 1px; }
+      .hero h1 { margin-top: 1.5mm; font-size: 24pt; line-height: 1; }
+      .hero-role { margin-top: 1mm; font-size: 9pt; }
+      .hero-summary { max-width: none; margin-top: 2mm; font-size: 7.2pt; line-height: 1.45; }
+      .contact-list { gap: 2mm 5mm; margin-top: 2mm; }
+      .contact-list li { font-size: 6.3pt; }
+      .contact-list b { margin-right: 1.5mm; font-size: 5.5pt; }
+      .portrait-frame { justify-self: end; margin: 0; }
+      .hero-portrait { width: 22mm; height: 27mm; filter: grayscale(100%); }
+      .evidence-strip { margin-top: 3mm; }
+      .evidence-strip > div { padding: 2mm 3mm; }
+      .evidence-strip strong { font-size: 8.5pt; line-height: 1.2; }
+      .evidence-strip span { font-size: 5.5pt; }
+      .resume-section { padding-block: 3.5mm; }
+      .section-heading { grid-template-columns: 8mm 1fr; gap: 2mm; margin-bottom: 2.5mm; }
+      .section-index { font-size: 5.5pt; }
+      .section-heading h2 { font-size: 13pt; line-height: 1.2; }
+      .profile-copy { max-width: none; font-size: 7pt; line-height: 1.5; }
+      .timeline-item { grid-template-columns: 25mm minmax(0, 1fr); gap: 4mm; padding-block: 2mm; }
+      .timeline-date { font-size: 5.6pt; line-height: 1.35; }
+      .timeline-body h3 { font-size: 8.2pt; line-height: 1.3; }
+      .timeline-role { margin-top: .5mm; font-size: 6pt; }
+      .timeline-body ul { margin-top: 1.5mm; }
+      .timeline-body li { padding-left: 3mm; font-size: 6.6pt; line-height: 1.45; }
+      .timeline-body li + li { margin-top: .6mm; }
+      .timeline-body li::before { top: .62em; width: 1mm; height: 1mm; }
+      #capabilities { break-before: page; padding-top: 0; }
+      .capability-group { min-height: 0; padding: 3mm 4mm; }
+      .capability-group h3 { font-size: 8pt; }
+      .capability-group p { margin-top: 1.3mm; font-size: 6pt; line-height: 1.45; }
+      #projects { padding-top: 4mm; padding-bottom: 2mm; }
+      .project-grid { gap: 2.5mm; }
+      .project-item { padding: 3mm; }
+      .project-index { font-size: 5pt; }
+      .project-item h3 { margin-top: 1mm; font-size: 8pt; line-height: 1.3; }
+      .project-item > p:not(.project-index) { margin-top: 1.2mm; font-size: 6.2pt; line-height: 1.45; }
+      .project-evidence { padding-top: 1.2mm; }
+      .tech-list { gap: 1mm; margin-top: 1.5mm; }
+      .tech-list li { padding: .5mm 1mm; font-size: 5pt; }
+      footer { padding-block: 2mm 0; }
+      .footer-inner { font-size: 5.5pt; }
       .reveal { opacity: 1 !important; transform: none !important; }
-      .timeline-item, .project-item, .capability-group, .work-item { break-inside: avoid; }
+      .timeline-item, .project-item, .capability-group { break-inside: avoid; }
       .project-item:hover { transform: none; box-shadow: none; }
       a { color: inherit; text-decoration: none; }
-      footer { padding-bottom: 0; }
     }
   </style>
 </head>
@@ -424,13 +494,16 @@
     <nav class="site-nav" aria-label="主导航">
       <div class="nav-inner">
         <a class="nav-brand" href="#profile">周志阳 <span>RESUME / 2026</span></a>
-        <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航"><span></span></button>
-        <ul class="nav-links" id="primary-nav">
-          <li><a href="#profile">概览</a></li>
-          <li><a href="#experience">经历</a></li>
-          <li><a href="#capabilities">能力</a></li>
-          <li><a href="#projects">项目</a></li>
-        </ul>
+        <div class="nav-actions">
+          <ul class="nav-links" id="primary-nav">
+            <li><a href="#profile">概览</a></li>
+            <li><a href="#experience">经历</a></li>
+            <li><a href="#capabilities">能力</a></li>
+            <li><a href="#projects">项目</a></li>
+          </ul>
+          <button class="export-button" type="button" data-export-pdf title="使用浏览器另存为 PDF">导出 PDF</button>
+          <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航"><span></span></button>
+        </div>
       </div>
     </nav>
 
@@ -604,6 +677,7 @@
 
   <script>
     const menuButton = document.querySelector("[data-menu-button]");
+    const exportButton = document.querySelector("[data-export-pdf]");
     const navLinks = document.getElementById("primary-nav");
     const sectionLinks = [...document.querySelectorAll(".nav-links a")];
     const sections = [...document.querySelectorAll("header[id], section[id]")];
@@ -624,6 +698,14 @@
         navLinks.classList.remove("is-open");
         document.body.classList.remove("menu-open");
       }
+    });
+
+    exportButton?.addEventListener("click", () => {
+      menuButton?.setAttribute("aria-expanded", "false");
+      menuButton?.setAttribute("aria-label", "打开导航");
+      navLinks?.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+      window.print();
     });
 
     if (reduceMotion) {

@@ -13,7 +13,7 @@
 - Dify 工作流、Milvus 向量数据库、内部知识库 RAG 与知识图谱项目经验
 - Claude Code Agent 机制研究、内部定制 Agent 开发与 Coding Agent 协同能力
 
-页面不得把个人原型描述为生产项目，不得声称拥有医疗行业、医院驻场、HIS/EMR/LIS 对接或私有化交付经验。
+页面只展示真实项目与内部实践，不展示非落地型原型；不得声称拥有医疗行业、医院驻场、HIS/EMR/LIS 对接或私有化交付经验。
 
 公开仓库和页面不得出现证件号码、工号、签名、证明文件或其他敏感材料。
 
@@ -21,9 +21,9 @@
 
 - 页面标题：周志阳 · 高级后端工程师｜FDE 方向
 - 英文眉题：SENIOR BACKEND ENGINEER · FDE TRACK
-- 核心定位：近 8 年企业级软件研发经验，正在将复杂业务系统经验延伸至 AI Agent、RAG 与前置交付场景
+- 核心定位：近 8 年企业级软件研发经验，覆盖复杂业务系统、Dify 工作流、Milvus RAG 与定制 Agent 开发
 - 地点：江苏南京
-- AI 能力按项目经验与个人原型如实区分
+- AI 能力按真实项目与内部实践呈现
 
 不展示年龄和婚姻状况。
 
@@ -34,7 +34,7 @@
 1. 固定导航
 2. 首屏职业定位与联系方式
 3. 核心能力证据条
-4. 职业概览与 FDE 可迁移能力
+4. 简洁职业概览
 5. 工作经历
 6. 能力矩阵
 7. 核心项目
@@ -57,7 +57,7 @@
 - 部门：Development
 - 职位：Software Engineer
 - 产品：CargoWise
-- 技术：C#、公司内部 WinForm 框架
+- 技术：C#、公司内部桌面应用框架
 - 业务：日本海关报关模块
 - 职责：功能开发、业务规则实现、问题定位、版本维护、内部工具维护升级
 - Agent 实践：研读 Claude Code Agent 相关实现与运行机制，结合内部研发流程参与定制 Agent 开发与应用
@@ -76,21 +76,21 @@
 
 ### 后端与业务系统
 
-Java、Spring、Spring Cloud、C#、WinForm、Python、WebSocket、REST API。
+Java、Spring、Spring Cloud、C#、Python、WebSocket、REST API。
 
 ### 数据、部署与前端
 
 MySQL、PostgreSQL、Redis、Elasticsearch、Docker、Linux、Nginx、Vue、TypeScript。
 
-### AI 应用工程
+### AI 原生应用相关技术
 
-Dify、LangChain、LangGraph、RAG、Milvus、Neo4j、Prompt Engineering、Function Calling。
+Dify、LangChain、LangGraph、Milvus、Neo4j、RAG 调优。
 
-其中 Dify 工作流、Milvus 内部知识库 RAG 与知识图谱属于小维 AI 项目经验；其他能力按实际项目或个人原型如实表达。
+其中 Dify 工作流、Milvus 内部知识库 RAG 与知识图谱属于小维 AI 项目经验。
 
-### Agent 工程与 AI 协同
+### Code Agent 技术
 
-Claude Code Agent 机制、内部定制 Agent 开发、Claude Code、Codex、GitHub Copilot、OpenCode。
+上下文管理、记忆系统、Hooks 系统、MCP 协议接入、Skill 系统、多 Agent 协同、Pi 框架定制开发。
 
 ## 6. 核心项目
 
@@ -208,7 +208,7 @@ Claude Code Agent 机制、内部定制 Agent 开发、Claude Code、Codex、Git
 - 慧咨环球经历和 CargoWise 项目置顶
 - 酷开结束日期为 2024-06-28
 - 不出现旧的 5 年经验、年龄、婚姻或“酷开至今”
-- AI 项目经验与个人原型范围表达准确
+- AI 能力仅展示真实项目与内部实践，不出现非落地型原型表述
 - 不出现医疗或医院交付经验声明
 - 不包含敏感身份或证明信息
 - 桌面、平板和手机无重叠、裁切或横向溢出

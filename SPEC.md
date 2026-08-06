@@ -1,117 +1,223 @@
-# 周志阳 - 个人简历网站设计规范
+# 周志阳 - FDE 方向简历网站规范
 
-## 1. Concept & Vision
+## 1. 产品定位
 
-一个展现后端工程师技术底蕴与职业深度的个人主页。视觉上以深邃的暗色调为基底，辅以克制的霓虹蓝/青绿高光，营造"代码编辑器 × 科技感"的专业氛围。交互追求流畅克制——不炫技但处处有回应，给访客一种"这个人很靠谱"的感觉。
+这是周志阳的公开个人简历网站，面向高级后端工程师及 FDE / AI 应用交付方向岗位。
 
-## 2. Design Language
+页面必须优先呈现可核验的工程事实：
 
-**Aesthetic direction**: 深色科技风 —— 受 VS Code Dark+ / Linear App 启发，极简但不冷淡，高信息密度但有呼吸感。
+- 近 8 年企业级软件研发经历
+- Java、C#、Python 跨技术栈能力
+- CargoWise 货代软件与日本海关报关业务经验
+- 高并发后端、知识图谱、检索与企业系统维护经验
+- Dify、LangChain、LangGraph、RAG 个人原型实践
+- Spec-driven Development 与 Coding Agent 协同开发能力
 
-**Color Palette**:
-- Background primary: `#0a0e17`
-- Background secondary: `#0f1623`
-- Background card: `#131b2e`
-- Border subtle: `#1e2a40`
-- Accent primary (Cyan): `#00d4ff`
-- Accent secondary (Blue): `#4f8ef7`
-- Accent warm (Purple): `#7c5af0`
-- Text primary: `#e8edf5`
-- Text secondary: `#8892a4`
-- Text muted: `#4a5568`
-- Success/tag: `#10b981`
+页面不得把个人原型描述为生产项目，不得声称拥有医疗行业、医院驻场、HIS/EMR/LIS 对接或私有化交付经验。
 
-**Typography**:
-- 标题: `Syne` (Google Fonts) — 几何感强，科技气质
-- 正文: `DM Sans` (Google Fonts) — 现代、清晰
-- 代码/标签: `JetBrains Mono` (Google Fonts) — 等宽、精确
-- 字号体系: 64/48/32/24/18/16/14/12px
+公开仓库和页面不得出现证件号码、工号、签名、证明文件或其他敏感材料。
 
-**Spatial System**:
-- Base unit: 8px
-- Section padding: 120px vertical
-- Container max-width: 1100px
-- Card padding: 32px
-- Gap between cards: 24px
+## 2. 页面标题与核心文案
 
-**Motion Philosophy**:
-- 页面加载: 逐字符打字机效果显示名字，subtle fade-up
-- 滚动触发: Intersection Observer，staggered fade-up-in（每项延迟 80ms）
-- 悬浮: 微妙的 scale(1.02) + glow shadow + border 高光
-- 背景: 缓慢移动的网格线 / 粒子光点（subtle，不抢焦点）
-- 时间线: 滚动时线条从顶部向下生长的动画
-- 技能条: 数字从 0 滚动到目标值的计数动画
+- 页面标题：周志阳 · 高级后端工程师｜FDE 方向
+- 英文眉题：SENIOR BACKEND ENGINEER · FDE TRACK
+- 核心定位：近 8 年企业级软件研发经验，正在将复杂业务系统经验延伸至 AI Agent、RAG 与前置交付场景
+- 地点：江苏南京
+- AI 原型必须显示 PERSONAL PROTOTYPE 或 NON-PRODUCTION
 
-**Visual Assets**:
-- Icons: Lucide Icons（CDN inline SVG）
-- 头像: 用户提供的 URL 保留
-- 装饰: CSS 网格背景、渐变光晕（radial-gradient halos）
-- 无 emoji，全用 SVG icon
+不展示年龄和婚姻状况。
 
-## 3. Layout & Structure
+## 3. 信息架构
 
-```
-[Sticky Nav] — Logo + 锚点链接，滚动时背景模糊
-[Hero] — 全屏，居中：头像 + 姓名（打字机）+ Title + 一句话简介 + 社交图标
-[About] — 左文右数据卡片布局
-[Skills] — 分类标签云 + 熟练度进度条
-[Experience] — 左侧时间线（PC）/ 垂直列表（Mobile）
-[Projects] — 卡片网格（2列），hover 展开详情
-[Footer] — 极简，联系方式 + 版权
-```
+页面按以下顺序组织：
 
-**Responsive Strategy**:
-- Desktop (>1024px): 双栏布局，时间线左侧
-- Tablet (768-1024px): 单栏，卡片2列
-- Mobile (<768px): 全单栏，时间线简化为垂直卡片
+1. 固定导航
+2. 首屏职业定位与联系方式
+3. 核心能力证据条
+4. 职业概览与 FDE 可迁移能力
+5. 工作经历
+6. 能力矩阵
+7. 核心项目
+8. 实践与作品
+9. 联系方式与版权
 
-## 4. Features & Interactions
+导航锚点为：
 
-**Hero Section**:
-- 头像带渐变边框光环，微呼吸动画
-- 姓名打字机效果（光标闪烁）
-- 鼠标移动时背景网格产生微妙视差
-- 向下滚动箭头 bounce 动画
+- #profile
+- #experience
+- #capabilities
+- #projects
+- #works
 
-**Skills Section**:
-- 技能分三类：语言、框架、数据库
-- 每个技能带熟练度进度条（动画填充）
-- 框架/工具以 tag pill 形式展示，带 icon
-- 熟练度数字计数动画（0 → %）
+## 4. 工作经历规范
 
-**Experience Timeline**:
-- 垂直时间线，线条随滚动生长
-- 每段经历卡片悬浮高亮
-- 显示公司名、职位、时间段、关键成果
+工作经历按倒序排列。
 
-**Projects Section**:
-- 卡片带项目名、简介、技术栈 tag
-- Hover 显示项目难点/成果
-- 技术栈以 pill tag 展示
+### 慧咨环球（中国）信息技术有限公司南京分公司
 
-**Nav**:
-- 固定顶部，滚动后背景毛玻璃效果
-- 当前 section 对应链接高亮
-- 平滑滚动到锚点
+- 时间：2024-07-02 至 2026-05-27
+- 部门：Development
+- 职位：Software Engineer
+- 产品：CargoWise
+- 技术：C#、公司内部 WinForm 框架
+- 业务：日本海关报关模块
+- 职责：功能开发、业务规则实现、问题定位、版本维护、内部工具维护升级
 
-## 5. Component Inventory
+### 深圳市酷开网络科技股份有限公司
 
-**NavBar**: 固定顶部，高度 64px，logo 左侧 + 导航链接右侧，PC 端展示，Mobile 端 hamburger
-**HeroSection**: 全屏容器，居中 flex 布局，粒子/网格背景
-**SectionTitle**: 大号标题 + 下划线渐变装饰
-**SkillCategory**: 标题 + SkillBar 数组
-**SkillBar**: 标签名 + 动画进度条 + 百分比
-**TimelineItem**: 时间线圆点 + 连接线 + 卡片内容
-**ProjectCard**: 标题 + 描述 + TechPill 数组 + hover overlay
-**TechPill**: 小圆角 tag，带浅色背景
-**SocialIcon**: SVG 图标，hover 上浮 + 主题色
+- 时间：2021-07-12 至 2024-06-28
+- 保留五菱灯语屏、小维 AI 云平台与智慧幼儿园相关事实
+- 不再使用“至今”
 
-## 6. Technical Approach
+其余经历保持真实倒序，不新增未确认的客户交付或量化结果。
 
-- **Framework**: 纯 HTML5 + CSS3 + Vanilla JS（零依赖，单文件可运行）
-- **CSS**: CSS Custom Properties 管理主题变量，CSS Grid + Flexbox 布局
-- **JS**: Intersection Observer 实现滚动动画，requestAnimationFrame 做计数动画
-- **字体**: Google Fonts CDN
-- **图标**: Lucide Icons CDN inline SVG
-- **构建**: 无需构建，直接用 `npx serve` 或任意静态服务器
-- **部署**: 构建 dist 后上传云服务器 or 使用 Vercel/Netlify 一键部署
+## 5. 能力矩阵
+
+能力分为四组，不使用百分比进度条：
+
+### 后端与业务系统
+
+Java、Spring、Spring Cloud、C#、WinForm、Python、WebSocket、REST API。
+
+### 数据、部署与前端
+
+MySQL、PostgreSQL、Redis、Elasticsearch、Docker、Linux、Nginx、Vue、TypeScript。
+
+### AI 应用原型
+
+Dify、LangChain、LangGraph、RAG、Prompt Engineering、Function Calling。
+
+必须显示个人原型范围标签。
+
+### AI 协同工程
+
+Spec-driven Development、Claude Code、Codex、GitHub Copilot、OpenCode。
+
+开发流程表达为：
+
+需求澄清 → SPEC → Plan → Task → 实现 → 验证
+
+## 6. 核心项目
+
+项目按以下顺序展示：
+
+1. CargoWise 日本海关报关模块
+2. 五菱灯语屏后台
+3. 创维小维 AI 云平台
+4. 短信群发系统
+5. XPORTS 智慧场馆 SaaS 平台
+
+每个项目包含项目类型、业务背景、个人工程动作与技术栈。不得编造未确认的性能指标、临床效果或交付结果。
+
+## 7. 视觉规范
+
+采用“证据型编辑简历”方向，重点是正式、清晰、可信和可打印。
+
+### 色彩
+
+- 页面外层：#e6e8e7
+- 纸张背景：#faf9f6
+- 次级背景：#efede7
+- 主文字：#1d1e1b
+- 次级文字：#52554e
+- 弱化文字：#74766f
+- 分隔线：#d1cec5
+- 主强调色：#b93d31
+- 证据标记：#cc9431
+
+不使用渐变、光球、霓虹背景或大面积单一蓝紫色主题。
+
+### 字体
+
+- 标题：Noto Serif SC
+- 正文：Noto Sans SC
+- 技术与标签：JetBrains Mono
+
+字体通过 Google Fonts 加载，并提供系统字体回退。
+
+### 布局
+
+- 最大宽度：980px
+- 桌面：纸张式居中布局
+- 页面内边距：46px
+- 卡片圆角：0 至 4px
+- 首屏不占满视口，保证后续内容可见
+- 主要层级通过编号、横线和留白表达
+- 避免嵌套卡片和过多装饰
+
+## 8. 响应式规范
+
+### Desktop
+
+- 导航横向展示
+- 首屏文字与头像双列
+- 证据条四列
+- 能力与项目双列
+- 工作经历采用日期列加正文列
+
+### Mobile
+
+在 760px 以下：
+
+- 展示可访问的菜单按钮
+- 内容改为单列
+- 证据条改为两列
+- 工作日期改为横向紧凑显示
+- 头像缩小但继续展示
+- 所有按钮和链接可触达，无文字溢出或横向滚动
+
+在 420px 以下：
+
+- 首屏头像置顶
+- 姓名与标题缩小
+- 联系方式自然换行
+
+## 9. 交互与无障碍
+
+- 原生 JavaScript 实现移动导航、当前章节高亮和轻量滚动淡入
+- 菜单按钮提供 aria-expanded、aria-controls 与动态 aria-label
+- 当前导航提供 aria-current
+- 链接和按钮有可见键盘焦点
+- 支持 prefers-reduced-motion
+- 语义化使用 header、nav、main、section、article、time 和 footer
+- 头像提供准确替代文本
+
+## 10. 打印规范
+
+使用 A4 纵向打印样式：
+
+- 页边距 11mm
+- 隐藏固定导航
+- 移除背景阴影与页面边框
+- 强制显示所有淡入内容
+- 工作经历、项目和能力块避免不合理跨页
+- 链接保持可读
+- 页面背景改为纯白
+
+浏览器应可直接导出整洁 PDF。
+
+## 11. 技术实现
+
+- 单文件：index.html
+- HTML5 + CSS3 + Vanilla JavaScript
+- CSS Custom Properties 管理设计变量
+- CSS Grid 与 Flexbox 负责布局
+- Intersection Observer 负责淡入
+- 无构建步骤
+- 无运行时框架
+- 直接通过 GitHub Pages 发布
+
+## 12. 验收标准
+
+- 标题与社交元信息符合 FDE 转型定位
+- 慧咨环球经历和 CargoWise 项目置顶
+- 酷开结束日期为 2024-06-28
+- 不出现旧的 5 年经验、年龄、婚姻或“酷开至今”
+- AI 能力明确标注个人原型范围
+- 不出现医疗或医院交付经验声明
+- 不包含敏感身份或证明信息
+- 桌面、平板和手机无重叠、裁切或横向溢出
+- 移动导航、锚点、邮箱、电话和 GitHub 链接有效
+- 打印预览内容完整、对比清晰、分页合理
+- 浏览器控制台无错误
+- GitHub Pages 可零构建发布

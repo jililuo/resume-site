@@ -1,2 +1,7 @@
 # Local Superpowers planning artifacts
 docs/superpowers/
+
+# Local AI assistant configuration and credentials
+.claude/
+.codex/
+.mcp.json

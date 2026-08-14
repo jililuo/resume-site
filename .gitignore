@@ -5,3 +5,7 @@ docs/superpowers/
 .claude/
 .codex/
 .mcp.json
+
+# Local resume source and exported documents
+/*.pdf
+/我的简历.md

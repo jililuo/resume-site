@@ -9,3 +9,6 @@ docs/superpowers/
 # Local resume source and exported documents
 /*.pdf
 /我的简历.md
+
+# Local render checks and screenshots
+/tmp/

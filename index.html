@@ -2,782 +2,374 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>周志阳 · 高级后端工程师</title>
-  <meta name="description" content="周志阳，近 8 年企业级软件研发经验，专注 Java/Spring 后端、复杂业务系统、高并发通信、SQL 调优与 AI 应用开发。">
-  <meta property="og:title" content="周志阳 · 高级后端工程师">
-  <meta property="og:description" content="Java/Spring 后端｜复杂业务系统｜高并发与性能优化｜AI 应用开发">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14665f">
+  <title>周志阳 · 高级 Java 后端 / AI 应用开发</title>
+  <meta name="description" content="周志阳，Java 后端与 AI 应用开发工程师。具备配置化 Agent 平台、RAG 检索优化、LLM 评测及高并发消息平台研发经验。">
+  <meta property="og:title" content="周志阳 · 高级 Java 后端 / AI 应用开发">
+  <meta property="og:description" content="Agent 平台建设 · RAG 检索优化 · 评测与持续迭代 · Java 后端工程">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:,">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    * { margin: 0; }
-    :root {
-      --canvas: #e6e8e7;
-      --paper: #faf9f6;
-      --paper-deep: #efede7;
-      --ink: #1d1e1b;
-      --ink-soft: #52554e;
-      --muted: #74766f;
-      --line: #d1cec5;
-      --line-dark: #b9b5ac;
-      --accent: #b93d31;
-      --evidence: #cc9431;
-      --serif: "Noto Serif SC", "Songti SC", serif;
-      --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --mono: "JetBrains Mono", "Cascadia Mono", monospace;
-      --content-width: 980px;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      min-width: 320px;
-      background: var(--canvas);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
-    body.menu-open { overflow: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    button { font: inherit; }
-    ::selection { background: rgba(185, 61, 49, .16); color: var(--accent); }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .page-shell {
-      width: min(100%, var(--content-width));
-      margin: 28px auto;
-      background: var(--paper);
-      border: 1px solid rgba(29, 30, 27, .08);
-      box-shadow: 0 18px 48px rgba(24, 28, 25, .11);
-    }
-    .container { padding-inline: 46px; }
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(250, 249, 246, .96);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding-inline: 46px;
-    }
-    .nav-brand {
-      font-family: var(--serif);
-      font-size: .96rem;
-      font-weight: 700;
-    }
-    .nav-brand span {
-      margin-left: 8px;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: .66rem;
-      font-weight: 500;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      list-style: none;
-      padding: 0;
-    }
-    .nav-links a {
-      display: block;
-      padding: 8px 11px;
-      color: var(--muted);
-      font-size: .77rem;
-      font-weight: 600;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--accent); }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-left: auto;
-    }
-    .export-button {
-      min-height: 34px;
-      padding: 7px 12px;
-      border: 1px solid var(--accent);
-      border-radius: 2px;
-      background: transparent;
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .66rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color .2s ease, color .2s ease;
-    }
-    .export-button:hover,
-    .export-button:focus-visible {
-      background: var(--accent);
-      color: #fff;
-    }
-    .menu-button {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      cursor: pointer;
-    }
-    .menu-button span,
-    .menu-button::before,
-    .menu-button::after {
-      display: block;
-      width: 20px;
-      height: 2px;
-      margin: 4px auto;
-      background: currentColor;
-      content: "";
-      transition: transform .2s ease, opacity .2s ease;
-    }
-    .menu-button[aria-expanded="true"] span { opacity: 0; }
-    .menu-button[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
-    .menu-button[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
-
-    .hero {
-      padding-block: 58px 46px;
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 148px;
-      align-items: start;
-      gap: 48px;
-    }
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .68rem;
-      font-weight: 600;
-    }
-    .eyebrow::before { width: 28px; height: 3px; background: var(--accent); content: ""; }
-    .hero h1 {
-      margin-top: 18px;
-      font-family: var(--serif);
-      font-size: 3.7rem;
-      line-height: 1.08;
-      font-weight: 700;
-    }
-    .hero-role {
-      margin-top: 8px;
-      color: var(--ink-soft);
-      font-size: 1.07rem;
-      font-weight: 500;
-    }
-    .hero-summary {
-      max-width: 640px;
-      margin-top: 18px;
-      color: var(--ink-soft);
-      font-size: .92rem;
-      line-height: 1.9;
-    }
-    .contact-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 22px;
-      margin-top: 23px;
-      list-style: none;
-      padding: 0;
-    }
-    .contact-list a,
-    .contact-list span {
-      color: var(--ink-soft);
-      font-size: .75rem;
-    }
-    .contact-list b {
-      margin-right: 6px;
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .62rem;
-    }
-    .contact-list a:hover { color: var(--accent); }
-    .portrait-frame {
-      justify-self: end;
-      align-self: center;
-    }
-    .hero-portrait {
-      position: relative;
-      z-index: 1;
-      width: 148px;
-      height: 184px;
-      object-fit: cover;
-      border: 1px solid var(--line-dark);
-      filter: grayscale(12%) contrast(1.03);
-    }
-    .evidence-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 42px;
-      border-block: 1px solid var(--line);
-    }
-    .evidence-strip > div {
-      min-width: 0;
-      min-height: 82px;
-      padding: 15px 14px;
-      border-right: 1px solid var(--line);
-    }
-    .evidence-strip > div:first-child { padding-left: 0; }
-    .evidence-strip > div:last-child { border-right: 0; }
-    .evidence-strip strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 1.13rem;
-      line-height: 1.45;
-    }
-    .evidence-strip span { color: var(--muted); font-size: .68rem; }
-
-    .resume-section {
-      padding-block: 58px;
-      border-bottom: 1px solid var(--line);
-      scroll-margin-top: 58px;
-    }
-    .section-heading {
-      display: grid;
-      grid-template-columns: 50px 1fr;
-      align-items: baseline;
-      gap: 18px;
-      margin-bottom: 34px;
-    }
-    .section-index { color: #aaa69d; font-family: var(--mono); font-size: .68rem; }
-    .section-heading h2 { font-family: var(--serif); font-size: 1.55rem; line-height: 1.35; }
-    .profile-copy {
-      max-width: 820px;
-      color: var(--ink-soft);
-      font-size: .88rem;
-      line-height: 1.95;
-    }
-
-    .timeline { display: grid; }
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 126px minmax(0, 1fr);
-      gap: 28px;
-      padding-block: 27px;
-      border-top: 1px solid var(--line);
-    }
-    .timeline-item:first-child { padding-top: 0; border-top: 0; }
-    .timeline-date {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .68rem;
-      line-height: 1.7;
-    }
-    .timeline-date span { color: var(--line-dark); }
-    .timeline-body h3 { font-family: var(--serif); font-size: 1rem; line-height: 1.55; }
-    .timeline-role { margin-top: 3px; color: var(--muted); font-size: .73rem; }
-    .timeline-body ul { margin-top: 12px; list-style: none; padding: 0; }
-    .timeline-body li {
-      position: relative;
-      padding-left: 17px;
-      color: var(--ink-soft);
-      font-size: .81rem;
-      line-height: 1.82;
-    }
-    .timeline-body li + li { margin-top: 5px; }
-    .timeline-body li::before {
-      position: absolute;
-      top: .72em;
-      left: 0;
-      width: 5px;
-      height: 5px;
-      background: var(--evidence);
-      content: "";
-    }
-
-    #capabilities { background: var(--paper-deep); }
-    .capability-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-    .capability-group {
-      min-width: 0;
-      min-height: 156px;
-      padding: 22px;
-      background: var(--paper);
-    }
-    .capability-group h3 { font-family: var(--serif); font-size: .93rem; }
-    .capability-group p {
-      margin-top: 11px;
-      color: var(--ink-soft);
-      font-family: var(--mono);
-      font-size: .69rem;
-      line-height: 1.95;
-      overflow-wrap: anywhere;
-    }
-    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .project-item {
-      min-width: 0;
-      padding: 23px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-    }
-    .project-item:hover {
-      transform: translateY(-2px);
-      border-color: var(--line-dark);
-      box-shadow: 0 8px 22px rgba(24, 28, 25, .07);
-    }
-    .project-index { color: var(--accent); font-family: var(--mono); font-size: .6rem; }
-    .project-item h3 { margin-top: 9px; font-family: var(--serif); font-size: .98rem; line-height: 1.55; }
-    .project-item > p:not(.project-index) { margin-top: 10px; color: var(--ink-soft); font-size: .77rem; line-height: 1.8; }
-    .project-evidence {
-      padding-top: 10px;
-      border-top: 1px solid var(--line);
-      color: var(--muted) !important;
-    }
-    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; list-style: none; padding: 0; }
-    .tech-list li {
-      padding: 3px 7px;
-      border: 1px solid var(--line);
-      background: var(--paper-deep);
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: .58rem;
-    }
-
-    .career-motto {
-      display: grid;
-      grid-template-columns: 126px minmax(0, 1fr);
-      align-items: end;
-      gap: 28px;
-      padding-block: 34px;
-      border-bottom: 1px solid var(--line);
-    }
-    .motto-label {
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: .62rem;
-      font-weight: 600;
-    }
-    .motto-copy {
-      color: var(--ink-soft);
-      font-family: var(--serif);
-      font-size: 1.08rem;
-      line-height: 1.5;
-    }
-
-    footer { padding-block: 28px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: .68rem; }
-    .footer-inner a:hover { color: var(--accent); }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .45s ease, transform .45s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 760px) {
-      body { background: var(--paper); }
-      .page-shell { margin: 0; border: 0; box-shadow: none; }
-      .container, .nav-inner { padding-inline: 22px; }
-      .nav-inner { gap: 10px; }
-      .nav-actions { gap: 6px; }
-      .menu-button { display: block; }
-      .nav-links {
-        position: absolute;
-        top: 58px;
-        left: 0;
-        right: 0;
-        display: none;
-        padding: 10px 22px 18px;
-        background: var(--paper);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav-links.is-open { display: grid; }
-      .nav-links a { min-height: 42px; display: flex; align-items: center; padding-inline: 0; }
-      .hero { padding-block: 42px 38px; }
-      .hero-layout { grid-template-columns: minmax(0, 1fr) 96px; gap: 20px; }
-      .hero h1 { font-size: 2.6rem; }
-      .hero-role { font-size: .94rem; }
-      .hero-summary { font-size: .84rem; }
-      .portrait-frame { margin-top: 28px; }
-      .hero-portrait { width: 96px; height: 120px; }
-      .contact-list { grid-column: 1 / -1; }
-      .evidence-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .evidence-strip > div { border-bottom: 1px solid var(--line); }
-      .evidence-strip > div:nth-child(2) { border-right: 0; }
-      .evidence-strip > div:nth-child(3) {
-        grid-column: 1 / -1;
-        padding-left: 0;
-        border-right: 0;
-        border-bottom: 0;
-      }
-      .resume-section { padding-block: 46px; }
-      .section-heading { grid-template-columns: 36px 1fr; gap: 12px; margin-bottom: 27px; }
-      .section-heading h2 { font-size: 1.32rem; }
-      .timeline-item,
-      .capability-grid,
-      .project-grid { grid-template-columns: 1fr; }
-      .timeline-item { gap: 9px; }
-      .timeline-date { flex-direction: row; align-items: center; gap: 6px; }
-      .capability-group { min-height: auto; }
-      .career-motto { grid-template-columns: 1fr; gap: 8px; }
-      .footer-inner { flex-direction: column; }
-    }
-    @media (max-width: 420px) {
-      .nav-brand span { display: none; }
-      .export-button { min-height: 32px; padding: 6px 9px; font-size: .61rem; }
-      .hero-layout { grid-template-columns: 1fr; }
-      .portrait-frame { order: -1; margin-top: 0; width: 82px; }
-      .hero-portrait { width: 82px; height: 102px; }
-      .hero h1 { font-size: 2.35rem; }
-      .eyebrow { font-size: .58rem; }
-      .evidence-strip strong { font-size: .96rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-    @media print {
-      @page { size: A4; margin: 0; }
-      html { font-size: 9pt; }
-      *, *::before, *::after { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      body, .page-shell, #capabilities { background: #fff; }
-      body { margin: 0; color: #111; }
-      .page-shell { width: 210mm; max-width: 210mm; margin: 0; border: 0; box-shadow: none; overflow: visible; }
-      .site-nav { display: none !important; }
-      .container { padding-inline: 9mm; }
-      .hero { padding: 7mm 9mm 6mm; border-bottom: 0; }
-      .hero-layout { grid-template-columns: minmax(0, 1fr) 26mm; gap: 6mm; align-items: center; }
-      .eyebrow { font-size: 6.5pt; }
-      .eyebrow::before { width: 7mm; height: 1px; }
-      .hero h1 { margin-top: 2mm; font-size: 28pt; line-height: 1; }
-      .hero-role { margin-top: 1mm; font-size: 10pt; }
-      .hero-summary { max-width: none; margin-top: 2.5mm; font-size: 8.2pt; line-height: 1.5; }
-      .contact-list { gap: 2mm 6mm; margin-top: 2.5mm; }
-      .contact-list li { font-size: 7pt; }
-      .contact-list b { margin-right: 1.5mm; font-size: 6pt; }
-      .portrait-frame { justify-self: end; margin: 0; }
-      .hero-portrait { width: 26mm; height: 32mm; filter: none; }
-      .evidence-strip { display: flex; gap: 4mm; margin-top: 3.5mm; border: 0; }
-      .evidence-strip > div { flex: 1 1 0; min-height: 0; padding: 1.5mm 0 1.5mm 3mm; border: 0; border-left: 1.5px solid var(--accent); }
-      .evidence-strip > div:first-child { padding-left: 3mm; }
-      .evidence-strip strong { font-size: 9.5pt; line-height: 1.25; }
-      .evidence-strip span { font-size: 6.3pt; }
-      .resume-section { padding-block: 5.5mm; border-bottom: 0; }
-      .section-heading { grid-template-columns: 9mm 1fr; gap: 2.5mm; margin-bottom: 3.5mm; }
-      .section-index { font-size: 6pt; }
-      .section-heading h2 { font-size: 14.5pt; line-height: 1.2; }
-      .profile-copy { max-width: none; font-size: 8.5pt; line-height: 1.58; }
-      .timeline-item { position: relative; grid-template-columns: 27mm minmax(0, 1fr); gap: 4.5mm; padding-block: 4.5mm; border-top: 0; }
-      .timeline-date { font-size: 6.7pt; line-height: 1.45; }
-      .timeline-body h3 { font-size: 9.6pt; line-height: 1.38; }
-      .timeline-role { margin-top: .8mm; font-size: 7.3pt; }
-      .timeline-body ul { margin-top: 2mm; }
-      .timeline-body li { padding-left: 3.2mm; font-size: 8.5pt; line-height: 1.52; }
-      .timeline-body li + li { margin-top: 1mm; }
-      .timeline-body li::before { top: .62em; width: 1mm; height: 1mm; }
-      .timeline-item + .timeline-item::before { position: absolute; top: 0; right: 0; left: 31.5mm; height: 1px; background: var(--line); content: ""; }
-      #capabilities { break-before: page; padding-top: 12mm; }
-      .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5mm 7mm; background: transparent; border: 0; }
-      .capability-group { min-height: 0; padding: 4mm 0 4mm 4mm; border-left: 1.5px solid var(--line-dark); background: transparent; }
-      .capability-group h3 { font-size: 9pt; }
-      .capability-group p { margin-top: 2mm; font-size: 7.6pt; line-height: 1.52; }
-      #projects { padding-top: 8mm; padding-bottom: 3.5mm; }
-      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5mm 4.5mm; }
-      .project-item { padding: 5.2mm 3mm 5.2mm 4mm; border: 0; border-left: 1.5px solid var(--line-dark); background: transparent; }
-      .project-index { font-size: 5.8pt; }
-      .project-item h3 { margin-top: 1.4mm; font-size: 9.4pt; line-height: 1.38; }
-      .project-item > p:not(.project-index) { margin-top: 1.8mm; font-size: 7.7pt; line-height: 1.52; }
-      .project-evidence { padding-top: 1.2mm; border-top: 0; }
-      .tech-list { gap: 1.2mm; margin-top: 2.3mm; }
-      .tech-list li { padding: .6mm 1.2mm; font-size: 5.8pt; }
-      footer { display: none; }
-      .career-motto {
-        grid-template-columns: 27mm minmax(0, 1fr);
-        gap: 4.5mm;
-        margin-top: 10mm;
-        padding: 3mm 9mm 7mm;
-        border: 0;
-      }
-      .motto-label { font-size: 5.8pt; }
-      .motto-copy { font-size: 10pt; line-height: 1.35; text-align: right; }
-      .footer-inner { font-size: 6.2pt; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .timeline-item, .project-item, .capability-group { break-inside: avoid; }
-      .project-item:hover { transform: none; box-shadow: none; }
-      a { color: inherit; text-decoration: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/resume.css">
+  <script src="assets/resume.js" defer></script>
 </head>
 <body>
-  <div class="page-shell">
-    <nav class="site-nav" aria-label="主导航">
-      <div class="nav-inner">
-        <a class="nav-brand" href="#profile">周志阳 <span>RESUME / 2026</span></a>
-        <div class="nav-actions">
-          <ul class="nav-links" id="primary-nav">
-            <li><a href="#profile">概览</a></li>
-            <li><a href="#experience">经历</a></li>
-            <li><a href="#capabilities">能力</a></li>
-            <li><a href="#projects">项目</a></li>
-          </ul>
-          <button class="export-button" type="button" data-export-pdf title="使用浏览器另存为 PDF">导出 PDF</button>
-          <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航"><span></span></button>
-        </div>
+  <a class="skip-link" href="#main">跳至简历正文</a>
+  <nav class="site-nav" aria-label="主导航">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#profile">周志阳<span>RESUME</span></a>
+      <div class="nav-actions">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="#capabilities">专业技能</a></li>
+          <li><a href="#experience">工作经历</a></li>
+          <li><a href="#projects">项目经历</a></li>
+        </ul>
+        <a class="export-button" href="output/pdf/zhou-zhiyang-resume.pdf" download="周志阳-Java后端与AI应用开发-简历.pdf" aria-label="下载 PDF 简历">下载 PDF</a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航"><span></span><span></span></button>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <header class="hero container" id="profile">
-      <div class="hero-layout">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">SENIOR BACKEND ENGINEER</p>
+  <main class="resume" id="main">
+    <div class="resume-page overview-page">
+      <header class="hero" id="profile">
+        <div class="hero-copy">
+          <p class="eyebrow">JAVA BACKEND / AI ENGINEERING</p>
           <h1>周志阳</h1>
-          <p class="hero-role">高级后端工程师</p>
-          <p class="hero-summary">近 8 年企业级软件研发经验，熟悉 Java 与 Spring 技术栈、网络通信和高并发编程，具备 SQL 调优、复杂业务建模、全栈开发、部署上线及疑难问题定位能力；拥有 RAG 调优与 AI 应用开发经验。</p>
-          <ul class="contact-list">
-            <li><a href="mailto:zhouyy8029@163.com"><b>MAIL</b>zhouyy8029@163.com</a></li>
-            <li><a href="tel:15556539591"><b>TEL</b>155&nbsp;5653&nbsp;9591</a></li>
-            <li><span><b>BASE</b>江苏南京</span></li>
+          <p class="hero-role"><span class="role-primary">高级 Java 后端工程师</span> <span class="role-divider">/</span> <span class="role-secondary">AI 应用开发工程师</span></p>
+          <p class="hero-summary">近 8 年企业级软件研发经验，聚焦 Agent 平台建设、RAG 检索优化与效果评测，具备复杂业务系统和高并发后端研发经验。</p>
+          <ul class="contact-list" aria-label="联系方式">
+            <li><a href="tel:15556539591">155 5653 9591<span>手机 / 微信</span></a></li>
+            <li><a href="mailto:zhouyy8029@163.com">zhouyy8029@163.com</a></li>
+            <li>江苏南京</li>
           </ul>
         </div>
-        <div class="portrait-frame reveal">
-          <img class="hero-portrait" src="assets/images/profile.jpg" alt="周志阳个人照片">
-        </div>
-      </div>
-      <div class="evidence-strip reveal">
-        <div><strong>近 8 年</strong><span>企业级软件研发</span></div>
-        <div><strong>Java / Spring</strong><span>核心后端技术栈</span></div>
-        <div><strong>高并发 / SQL</strong><span>性能优化与问题定位</span></div>
-      </div>
-    </header>
+        <img class="portrait" src="assets/images/profile.jpg" alt="周志阳个人照片" width="108" height="135">
+      </header>
 
-    <main>
-      <section class="resume-section container" aria-labelledby="about-title">
-        <div class="section-heading reveal">
-          <span class="section-index">01</span>
-          <h2 id="about-title">职业概览</h2>
-        </div>
-        <p class="profile-copy reveal">安徽中医药大学计算机科学与技术本科（全日制统招一本），近 8 年企业级软件研发经验，长期从事 Java、C#、Python 后端与复杂业务系统开发。熟悉 Spring 技术栈，理解 JVM 内存机制，具备高并发通信、SQL 调优、复杂业务建模、服务部署和故障定位经验。曾参与 CargoWise One 日本海关报关与数据清洗，在创维小维 AI 项目中负责 AI 大脑核心通信接口、数据看板、知识图谱问答和智能客服 RAG 系统，并参与公司内部 AI 工具开发。</p>
+      <section class="resume-section" id="capabilities" aria-labelledby="skills-title">
+        <div class="section-heading"><h2 id="skills-title">专业技能</h2><span>EXPERTISE</span></div>
+        <dl class="skills">
+          <div class="skill-row skill-featured">
+            <dt>AI 应用开发</dt>
+            <dd>Agent、RAG、Prompt / Context Engineering、Skill、MCP、Function Calling<span class="web-only"> 与工具调用</span>；具备配置化 Agent、多 Agent 编排、混合检索、Query 理解与 Rerank 实践，<span class="web-only">以及 Self-RAG、CRAG、Adaptive RAG 方案评估经验；</span>熟悉 LLM-as-Judge、G-Eval、Faithfulness<span class="web-only">、WCP</span> 等评测方法。</dd>
+          </div>
+          <div class="skill-row">
+            <dt>Java 与框架</dt>
+            <dd>Java 集合、I/O、反射<span class="web-only">、异常处理</span>与并发编程；<span class="web-only">Spring、Spring MVC、</span>Spring Boot、Spring Cloud、MyBatis，理解 IoC、AOP、事务及框架扩展机制。</dd>
+          </div>
+          <div class="skill-row">
+            <dt>分布式与中间件</dt>
+            <dd>Redis、Kafka、RabbitMQ；具备缓存一致性、分布式锁、接口幂等、消息可靠性、<span class="web-only">重复消费、</span>积压治理及多租户隔离实践<span class="web-only">，熟悉微服务通信与跨服务一致性问题</span>。</dd>
+          </div>
+          <div class="skill-row">
+            <dt>数据库与性能</dt>
+            <dd>MySQL 索引、事务、MVCC、锁与日志；具备慢 SQL、死锁、连接池和高并发链路分析，以及 JVM、GC、OOM、CPU 异常排查经验。</dd>
+          </div>
+          <div class="skill-row">
+            <dt>工程化</dt>
+            <dd>Linux、Docker、Jenkins、Nginx、<span class="web-only">Tomcat、</span>Git、ELK；熟悉 HTTP<span class="web-only"> / HTTPS</span>、WebSocket、TCP/IP，使用 Codex、Claude Code 辅助研发、发布和故障定位<span class="web-only">，具备日志检索与线上故障处理经验</span>。</dd>
+          </div>
+        </dl>
       </section>
 
-      <section class="resume-section container" id="experience" aria-labelledby="experience-title">
-        <div class="section-heading reveal">
-          <span class="section-index">02</span>
-          <h2 id="experience-title">工作经历</h2>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-date"><time datetime="2024-07-02">2024.07.02</time><span>—</span><time datetime="2026-05-27">2026.05.27</time></div>
-            <div class="timeline-body">
-              <h3>慧咨环球（中国）信息技术有限公司南京分公司</h3>
-              <p class="timeline-role">Software Engineer · Development</p>
-              <ul>
-                <li>参与全球货代软件 CargoWise One 的功能开发，使用 C# 与公司内部框架交付企业级业务功能。</li>
-                <li>负责日本海关报关与数据清洗相关模块，理解并实现复杂业务规则，参与问题定位与版本维护。</li>
-                <li>维护和升级公司内部工具 CW Tools，并结合研发流程参与内部 AI 工具的设计与定制开发。</li>
-              </ul>
-            </div>
+      <section class="resume-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading"><h2 id="experience-title">工作经历</h2><span>EXPERIENCE</span></div>
+        <div class="experience-list">
+          <article class="job">
+            <div class="job-heading"><h3>慧咨环球信息技术有限公司<span class="company-note">（澳企）</span></h3><p class="date"><time datetime="2024-07">2024.07</time> - <time datetime="2026-05">2026.05</time></p></div>
+            <p class="job-role">Development-Customs · Software Engineer</p>
+            <p>负责 CargoWise One 多地区海关清关业务及 AI 应用建设：完成日本、台湾海关核心业务研发与 NACCS 对接，交付覆盖进出口 <strong>20+ 业务 Code</strong> 的 EDI 链路；围绕多个海关业务组的知识问答需求，参与建设可配置 Agent 平台、DeepRAG 检索优化能力和 DeepEvalOpt 评测平台，支撑日本、台湾、韩国、南非、澳洲及北美业务组接入；同时参与 CW Tools 研发效能工具建设，通过任务板 MCP、Git worktree 与 Code Review Agent 推进设计、环境准备及代码审查自动化。</p>
           </article>
-          <article class="timeline-item reveal">
-            <div class="timeline-date"><time datetime="2021-07-12">2021.07.12</time><span>—</span><time datetime="2024-06-28">2024.06.28</time></div>
-            <div class="timeline-body">
-              <h3>深圳市酷开网络科技股份有限公司</h3>
-              <p class="timeline-role">后端开发工程师 · 智屏拓展事业部</p>
-              <ul>
-                <li>负责五菱灯语屏核心业务开发、服务端部署维护与项目框架设计。</li>
-                <li>参与创维小维 AI 云平台核心功能迭代，以及数据大屏和数据报表开发。</li>
-                <li>完成知识图谱问答与智能客服 RAG 系统开发，承担向量数据库、图数据库的搭建使用及 RAG 调优。</li>
-                <li>基于 WebSocket 全双工通信完成小维 AI 大脑核心接口开发，支撑千万级业务调用量。</li>
-              </ul>
-            </div>
+          <article class="job">
+            <div class="job-heading"><h3>创维酷开网络科技股份有限公司</h3><p class="date"><time datetime="2021-07">2021.07</time> - <time datetime="2024-06">2024.06</time></p></div>
+            <p class="job-role">智屏拓展事业部 · 后端开发工程师</p>
+            <p>负责创维电视端小维 AI 智慧语音及通用后端能力建设，参与 AI 大脑 WebSocket 核心接口、语音交互编排、数据看板与报表研发，支撑约 <strong>2,000 万设备、日活超 600 万</strong>的业务规模；从 0 到 1 参与建设统一消息推送平台，整合邮件、短信、飞书等渠道；并参与知识图谱问答及智能客服 RAG 系统的向量检索、图数据应用与流程调优。</p>
           </article>
-          <article class="timeline-item reveal">
-            <div class="timeline-date"><time datetime="2019-04">2019.04</time><span>—</span><time datetime="2021-03">2021.03</time></div>
-            <div class="timeline-body">
-              <h3>南京运享通信息科技有限公司</h3>
-              <p class="timeline-role">Java 开发工程师 · 业务线技术负责人</p>
-              <ul>
-                <li>负责 XPORTS 场馆后台、微信公众号与小程序等系统接口开发。</li>
-                <li>参与后端架构设计、前端布局确认、任务协作和部署上线。</li>
-                <li>重构部分业务模块，改善代码可读性与运行性能。</li>
-              </ul>
-            </div>
+          <article class="job job-brief">
+            <div class="job-heading"><h3>南京运享通信息科技有限公司</h3><p class="date"><time datetime="2019-04">2019.04</time> - <time datetime="2021-03">2021.03</time></p></div>
+            <p class="job-role">产品研发部 · Java 开发工程师</p>
           </article>
-          <article class="timeline-item reveal">
-            <div class="timeline-date"><time datetime="2018-06">2018.06</time><span>—</span><time datetime="2019-03">2019.03</time></div>
-            <div class="timeline-body">
-              <h3>北京思特奇信息技术股份有限公司</h3>
-              <p class="timeline-role">Java 开发工程师 · 产品研发部</p>
-              <ul>
-                <li>参与安徽移动 NGBOSS 系统 Java 化项目，负责业务模块编码与测试。</li>
-              </ul>
-            </div>
+          <article class="job job-brief">
+            <div class="job-heading"><h3>北京思特奇信息技术股份有限公司</h3><p class="date"><time datetime="2017-11">2017.11</time> - <time datetime="2019-03">2019.03</time></p></div>
+            <p class="job-role">产品研发部 · Java 开发工程师（含实习）</p>
           </article>
         </div>
       </section>
 
-      <section class="resume-section container" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="section-heading reveal">
-          <span class="section-index">03</span>
-          <h2 id="capabilities-title">能力矩阵</h2>
-        </div>
-        <div class="capability-grid">
-          <article class="capability-group reveal">
-            <h3>后端开发与业务系统</h3>
-            <p>Java · Spring · Spring Cloud · C# · Python · JVM · 多线程与并发 · REST API · WebSocket</p>
-          </article>
-          <article class="capability-group reveal">
-            <h3>数据、中间件与部署</h3>
-            <p>MySQL · PostgreSQL · SQL 调优 · Redis · Kafka · RabbitMQ · Elasticsearch · Docker · Linux · Nginx</p>
-          </article>
-          <article class="capability-group reveal">
-            <h3>AI 应用与 Agent</h3>
-            <p>LangChain · LangGraph · Milvus · Neo4j · RAG 调优 · 自定义 Agent · 工作流编排 · 上下文与记忆管理 · 多 Agent 协同</p>
-          </article>
-          <article class="capability-group reveal">
-            <h3>前端与工程实践</h3>
-            <p>Vue · TypeScript · 全栈开发 · 部署上线 · 故障定位 · 存量系统维护</p>
-          </article>
-        </div>
+      <section class="resume-section education" aria-labelledby="education-title">
+        <div class="section-heading"><h2 id="education-title">教育经历</h2><span>EDUCATION</span></div>
+        <div class="job-heading"><h3>安徽中医药大学</h3><p class="date"><time datetime="2014-09">2014.09</time> - <time datetime="2018-06">2018.06</time></p></div>
+        <p>计算机科学与技术 · 本科（统招一本）<span class="education-extra">校园奖学金 · CET-4</span></p>
       </section>
+      <div class="page-footer" aria-hidden="true"><span>周志阳 · Java 后端 / AI 应用开发</span><span>01 / 03</span></div>
+    </div>
 
-      <section class="resume-section container" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading reveal">
-          <span class="section-index">04</span>
-          <h2 id="projects-title">核心项目</h2>
+    <section class="resume-page project-page" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading project-section-heading"><h2 id="projects-title">项目经历</h2><span>PROJECTS</span></div>
+      <article class="project" id="agent-project" aria-labelledby="agent-title">
+        <header class="project-heading">
+          <p class="project-context">AGENT PLATFORM <span>慧咨环球 · 海关业务</span></p>
+          <h3 id="agent-title">海关业务组可配置 Agent 统一平台</h3>
+          <p class="project-stack"><span>技术关键词</span>Java · Spring Boot · etcd · Redis · Milvus · MCP</p>
+        </header>
+        <p class="project-summary print-only">面向多地区海关知识问答需求，统一 Agent 研发、配置与运行管控，减少模型、Prompt、知识库和工具重复建设，支撑日本、台湾、韩国、南非、澳洲及北美业务组接入。</p>
+        <p class="project-summary web-only">随着多个国家及地区海关业务组陆续建设知识问答 Agent，各团队分别开发会造成模型、Prompt、知识库及工具接入重复建设。项目建设统一的配置化 Agent 平台，收拢 Agent 的研发、发布和运行管控，通过配置快速完成不同地区业务接入，已支撑日本、台湾、韩国、南非、澳洲及北美业务组上线。</p>
+        <div class="print-only">
+        <div class="project-detail">
+          <h4>个人职责</h4>
+          <ul>
+            <li><strong>配置化架构：</strong>参与核心架构与配置规范设计，统一模型、Prompt、知识库、Skill、MCP 工具和运行参数，通过 AgentFactory 与 Registry 动态创建和管理实例。</li>
+            <li><strong>运行时与路由：</strong>负责注册、更新、注销及会话执行，支撑 ReAct、RAG 和工具调用；采用“关键词粗筛 + LLM 语义精排”选择 Skill、Prompt 和工具。</li>
+            <li><strong>业务接入：</strong>完成多地区 Agent 配置、知识库绑定、功能验证与上线支持，沉淀可复用的接入规范。</li>
+          </ul>
         </div>
-        <div class="project-grid">
-          <article class="project-item reveal">
-            <p class="project-index">01 / ENTERPRISE SOFTWARE</p>
-            <h3>CargoWise One 日本海关报关模块</h3>
-            <p>面向国际货代业务的企业级桌面软件模块，负责日本海关报关、数据清洗相关功能开发及内部工具维护升级。</p>
-            <p class="project-evidence">重点：复杂业务规则落地、存量系统维护、故障定位与版本演进。</p>
-            <ul class="tech-list" aria-label="CargoWise 项目技术栈"><li>C#</li><li>WinForm</li><li>Custom Framework</li></ul>
-          </article>
-          <article class="project-item reveal">
-            <p class="project-index">02 / CONNECTED DEVICE</p>
-            <h3>五菱灯语屏后台</h3>
-            <p>为车机、App 与设备提供云端接口，支撑设备通信、内容下发和状态管理。</p>
-            <p class="project-evidence">负责后端框架设计、服务部署与维护；基于 WebSocket 支撑双向通信，并使用 FFmpeg 处理媒体资源。</p>
-            <ul class="tech-list" aria-label="五菱灯语屏项目技术栈"><li>Spring Security</li><li>WebSocket</li><li>Redis</li><li>FFmpeg</li></ul>
-          </article>
-          <article class="project-item reveal">
-            <p class="project-index">03 / AI PLATFORM</p>
-            <h3>创维小维 AI 云平台</h3>
-            <p>基于 Java 与 Spring Cloud 为电视端小维 AI 应用提供语音检索、数据看板、知识图谱问答与内部知识库能力。</p>
-            <p class="project-evidence">负责 AI 大脑 WebSocket 核心通信接口和数据报表开发；完成知识图谱问答、Dify 工作流及 Milvus RAG 系统建设。</p>
-            <ul class="tech-list" aria-label="小维 AI 项目技术栈"><li>Java</li><li>Spring Cloud</li><li>Dify</li><li>Milvus</li><li>RAG</li><li>Neo4j</li><li>Elasticsearch</li></ul>
-          </article>
-          <article class="project-item reveal">
-            <p class="project-index">04 / MESSAGING</p>
-            <h3>短信群发系统</h3>
-            <p>面向江苏电信的批量短信发送系统，支持任务调度、优先级处理与发送链路管理。</p>
-            <p class="project-evidence">基于 SMGP、Netty 与线程池实现网关通信和发送处理，批量发送能力不低于 2,000 条/秒。</p>
-            <ul class="tech-list" aria-label="短信群发项目技术栈"><li>Netty</li><li>Kafka</li><li>Redis</li><li>xxl-Job</li><li>Elasticsearch</li></ul>
-          </article>
-          <article class="project-item reveal">
-            <p class="project-index">05 / SAAS</p>
-            <h3>XPORTS 智慧场馆 SaaS 平台</h3>
-            <p>覆盖场馆后台、卡务、场地、商城和培训等业务模块，服务微信公众号与小程序场景。</p>
-            <p class="project-evidence">参与业务架构、秒杀商城、排课预约及微信支付链路开发，关注高可用、支付一致性与查询性能。</p>
-            <ul class="tech-list" aria-label="XPORTS 项目技术栈"><li>Spring Security</li><li>Redis</li><li>RabbitMQ</li><li>Vue</li><li>微信支付</li></ul>
-          </article>
+        <div class="project-detail">
+          <h4>难点亮点</h4>
+          <ul>
+            <li><strong>配置驱动与隔离：</strong>地区差异收敛为配置，业务组无需重复开发主流程；检索按 Agent 与知识库绑定范围执行，避免跨地区资料污染。</li>
+            <li><strong>无停机热更新：</strong>通过新旧实例切换、引用计数和延迟释放，让新请求使用新配置，在途请求完成后再释放旧实例。</li>
+            <li><strong>会话并发控制：</strong>同一会话串行、不同会话并行，兼顾上下文一致性与吞吐；MCP 统一工具发现、调用和结果回传。</li>
+          </ul>
         </div>
-      </section>
+        </div>
+        <div class="web-only project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>配置化架构设计：</strong>参与平台核心架构与配置规范设计，将模型、Prompt、知识库、Skill、MCP 工具及运行参数统一抽象为配置，支持通过 AgentFactory 与 Registry 动态创建、查询和管理 Agent。</li>
+              <li><strong>运行时与调度管理：</strong>负责 Agent 实例注册、更新、注销及会话执行能力，支撑 ReAct 推理、RAG 检索、工具调用与多轮上下文管理，并通过统一链路记录关键执行过程。</li>
+              <li><strong>Skill 与工具路由：</strong>设计“关键词粗筛 + LLM 语义精排”的混合路由，根据用户问题动态选择专业 Skill、Prompt 与工具，在控制模型调用成本的同时提升专业场景匹配准确性。</li>
+              <li><strong>多地区业务交付：</strong>对接不同海关业务组的知识问答需求，完成 Agent 配置、知识库绑定、功能验证与上线支持，沉淀复用接入规范。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>配置驱动的零代码接入：</strong>将地区差异收敛到 Prompt、知识库、Skill 和参数配置，新业务组无需重复开发 Agent 主流程即可完成接入，降低多地区复制和长期维护成本。</li>
+              <li><strong>知识范围与租户隔离：</strong>建立 Agent 与知识库绑定关系，检索阶段按业务域限定数据范围，避免不同地区海关资料相互污染，保证回答依据可控。</li>
+              <li><strong>Agent 无停机热更新：</strong>采用新旧实例切换、引用计数与延迟释放机制，新请求使用新配置，执行中的旧请求完成后再释放原实例，兼顾配置实时生效与请求连续性。</li>
+              <li><strong>会话级顺序与并发控制：</strong>同一会话按顺序执行，避免上下文覆盖和消息乱序；不同会话并行处理，兼顾对话一致性与整体吞吐能力。</li>
+              <li><strong>MCP 标准化工具接入：</strong>统一工具发现、调用与结果回传协议，屏蔽不同工具服务的实现差异，便于 Agent 按配置扩展业务能力。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
 
-    </main>
+      <article class="project" id="rag-project" aria-labelledby="rag-title">
+        <header class="project-heading">
+          <p class="project-context">RETRIEVAL OPTIMIZATION <span>慧咨环球 · 海关业务</span></p>
+          <h3 id="rag-title">DeepRAG 海关知识检索深度优化引擎</h3>
+          <p class="project-stack"><span>技术关键词</span>RAG · Dense / Sparse · RRF · Rerank · Query 理解</p>
+        </header>
+        <p class="project-summary print-only">针对基础 RAG 在跨地区规则、长文档和专业术语上的召回不足，开展独立检索优化专项，在统一评测集上验证策略，将稳定能力服务化接回 Agent 平台。</p>
+        <p class="project-summary web-only">Agent 平台早期采用基础 RAG 支撑海关资料问答，但面对跨地区规则、长文档和专业术语时，逐渐出现召回不准、上下文噪声及复杂问题理解不足。项目将 RAG 作为独立专项，在统一评测集上完成检索链路的系统优化，并将验证稳定的能力服务化接回 Agent 平台。</p>
+        <div class="print-only">
+        <div class="project-detail">
+          <h4>个人职责</h4>
+          <ul>
+            <li><strong>基线与指标：</strong>整理问答样本和相关文档标注，固定数据集与参数，建立检索、生成和端到端指标，确保策略可复现、可比较。</li>
+            <li><strong>链路研发：</strong>负责解析切分、向量与关键词召回、融合、重排和上下文组装，围绕命中率、排序质量与答案忠实度逐项验证。</li>
+            <li><strong>策略评估：</strong>设计 Query 改写、HyDE、Multi-Query 实验，评估 Self-RAG、CRAG、Adaptive / Agentic RAG，按效果、时延和复杂度选择集成方案。</li>
+          </ul>
+        </div>
+        <div class="project-detail">
+          <h4>难点亮点</h4>
+          <ul>
+            <li><strong>结构化切分：</strong>对比固定长度、递归、语义与结构化切分，保留章节、表格和条款关系，平衡语义完整性与召回粒度。</li>
+            <li><strong>混合检索与双重排：</strong>Dense + Sparse 兼顾语义与编码、术语精确匹配，以 RRF 融合，再结合轻量重排与 Cross-Encoder 精排前置有效证据。</li>
+            <li><strong>自适应取舍：</strong>简单问题走低成本链路，复杂或证据不足的问题进入扩展、纠错或多轮检索；实验策略经同集验证后再进入集成候选。</li>
+          </ul>
+        </div>
+        </div>
+        <div class="web-only project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>评测体系与 Baseline：</strong>整理典型海关问答样本与相关文档标注，建立检索、生成和端到端指标，固定数据集与参数，保证各轮策略能够在统一口径下比较。</li>
+              <li><strong>检索链路优化：</strong>负责文档解析与切分、向量召回、关键词召回、结果融合、重排及上下文组装等核心链路，围绕命中率、排序质量和答案忠实度逐项验证。</li>
+              <li><strong>Query 理解与复杂问题处理：</strong>针对海关术语、地区差异和复合问题，设计意图识别、Query 改写、HyDE 与 Multi-Query 等实验方案，提升用户问题与资料表达不一致时的召回能力。</li>
+              <li><strong>高级策略评估与集成：</strong>在统一评测框架中验证 Self-RAG、CRAG、Adaptive RAG 与 Agentic RAG 等方案，根据效果、延迟和工程复杂度选择适用能力，并通过检索服务接口接入 Agent 平台。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>结构化感知切分：</strong>针对海关规则文档章节长、表格与条款关联紧密的问题，对比固定长度、递归、语义及结构化切分，兼顾语义完整性与召回粒度，减少关键条件被切断。</li>
+              <li><strong>Dense + Sparse 混合检索：</strong>结合向量检索的语义召回与关键词检索对业务编码、地区名称和专业术语的精确匹配能力，并通过 RRF 等方式融合结果，降低单一路径漏召回。</li>
+              <li><strong>双重排提升精度：</strong>在初步召回后结合轻量语义重排与 Cross-Encoder 精排，过滤语义相近但业务条件不匹配的资料，将高相关证据稳定前置。</li>
+              <li><strong>自适应策略路由：</strong>对简单事实问题使用低成本快速链路，对复杂或证据不足的问题进入 Query 扩展、纠错或多轮检索，在效果、时延和成本之间动态取舍。</li>
+              <li><strong>策略验证与线上口径分离：</strong>将 Naive、Advanced、Self-RAG、CRAG、Adaptive 与 Agentic 等能力作为专项评估方案，只有在统一评测集上验证稳定的策略才进入集成候选。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <div class="page-footer" aria-hidden="true"><span>周志阳 · 项目经历</span><span>02 / 03</span></div>
+    </section>
 
-    <aside class="career-motto container" aria-label="职业宣言">
-      <span class="motto-label">CAREER PRINCIPLE</span>
-      <p class="motto-copy">Perfection is getting every little thing right.</p>
-    </aside>
+    <section class="resume-page project-page" aria-labelledby="more-projects-title">
+      <div class="section-heading continuation-heading"><h2 id="more-projects-title">项目经历<span class="continued"> / 续</span></h2><span>SELECTED PROJECTS</span></div>
+      <article class="project" id="eval-project" aria-labelledby="eval-title">
+        <header class="project-heading">
+          <p class="project-context">EVALUATION &amp; QUALITY <span>慧咨环球 · 海关业务</span></p>
+          <h3 id="eval-title">DeepEvalOpt 海关 Agent 效果评测与优化平台</h3>
+          <p class="project-stack"><span>技术关键词</span>Trace · LLM-as-Judge · G-Eval · Faithfulness · HitRate · WCP</p>
+        </header>
+        <p class="project-summary print-only">针对多 Agent、多版本迭代中人工抽测难以比较效果的问题，统一采集执行 Trace，完成自动评分、问题归因、优化任务生成与同集回归，形成持续优化闭环。</p>
+        <p class="project-summary web-only">随着 Agent 数量和版本持续增加，人工抽测难以横向比较模型、Prompt、RAG 与 Skill 调整效果。项目建设统一评测与优化平台，标准化采集各 Agent 的执行 Trace，完成自动评分、问题归因、优化任务生成与同集回归，形成“评测 - 诊断 - 优化 - 复测”闭环。</p>
+        <div class="print-only">
+        <div class="project-detail">
+          <h4>个人职责</h4>
+          <ul>
+            <li><strong>评测架构：</strong>参与 Prompt、RAG、Skill、Agent 四类评测设计，通过统一 Evaluator 接口与 Registry 管理评测器，支持批量执行和版本对比。</li>
+            <li><strong>Trace 接入：</strong>设计标准数据结构，记录问题、回答、检索证据、Skill 路由、工具调用和中间状态，低侵入接入不同 Agent。</li>
+            <li><strong>优化回归：</strong>将低分样本转为包含证据、建议、影响范围和验证方式的优化任务，以固定评测集验证优化前后效果。</li>
+          </ul>
+        </div>
+        <div class="project-detail">
+          <h4>难点亮点</h4>
+          <ul>
+            <li><strong>稳定评分：</strong>基于 G-Eval 概率加权思路，归一化候选评分 token 的概率，结合固定温度与评分规则，减少单次打分波动。</li>
+            <li><strong>声明级诊断：</strong>拆分回答中的独立声明，逐条核验检索证据，输出支持、无依据或矛盾判断，将幻觉定位至具体语句。</li>
+            <li><strong>分层归因：</strong>联合 HitRate、WCP、上下文噪声和 Faithfulness，区分知识缺失、召回不足、排序问题与生成偏差，匹配对应优化动作。</li>
+          </ul>
+        </div>
+        </div>
+        <div class="web-only project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>评测架构与指标体系：</strong>参与 Prompt、RAG、Skill、Agent 四类评测能力设计，建立可量化、可复现的评测口径，并通过统一 Evaluator 接口与 Registry 管理评测器。</li>
+              <li><strong>统一 Trace 接入：</strong>设计标准 Trace 数据结构，记录问题、回答、检索结果、Skill 路由、工具调用与中间状态，使平台能够低侵入接入不同 Agent 应用。</li>
+              <li><strong>诊断与优化闭环：</strong>结合检索、生成和行为指标识别低分样本，将问题转化为包含证据、建议、影响范围和验证方式的优化任务，并使用固定评测集完成优化前后回归。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>LLM-as-Judge 稳定评分：</strong>基于 G-Eval 概率加权思想，对候选评分 token 的概率进行归一化，在固定温度和评分规则下减少直接单次打分的离散波动。</li>
+              <li><strong>Faithfulness 声明级诊断：</strong>将回答拆分为独立声明，逐条与检索证据核验并输出 supported、unsupported、contradicted 等判断，使幻觉能够定位到具体语句和证据。</li>
+              <li><strong>RAG 问题分层归因：</strong>联合分析 HitRate、WCP、上下文噪声与 Faithfulness，区分知识缺失、召回不足、排序不佳、上下文干扰和生成偏差，为不同问题匹配对应优化动作。</li>
+              <li><strong>可插拔评测流水线：</strong>将评测能力组件化，新增指标只需实现统一接口并注册，无需改动主流程；评测任务支持批量执行、结果汇总和历史版本对比。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
 
-    <footer class="container">
-      <div class="footer-inner">
-        <span>© <span id="current-year">2026</span> 周志阳</span>
-        <span><a href="mailto:zhouyy8029@163.com">zhouyy8029@163.com</a> · 江苏南京</span>
-      </div>
-    </footer>
-  </div>
+      <article class="project" id="messaging-project" aria-labelledby="messaging-title">
+        <header class="project-heading">
+          <p class="project-context">BACKEND PLATFORM <span>创维酷开</span></p>
+          <h3 id="messaging-title">统一消息推送平台</h3>
+          <p class="project-stack"><span>技术关键词</span>Java · Spring Boot · Kafka · Redis · MySQL · 策略模式</p>
+        </header>
+        <p class="project-summary print-only">面向售前推广、售后服务等业务，统一邮件、短信、飞书渠道及接入接口，集中处理消息中转、优先级、定时投递、流控与供应商容灾。</p>
+        <p class="project-summary web-only">面向售前推广、售后服务等业务的统一消息推送平台，集中封装邮件、短信、飞书等渠道，为各业务系统提供标准接入能力，并统一处理消息中转、优先级、定时投递、流量控制和供应商容灾，避免重复建设。</p>
+        <div class="print-only">
+        <div class="project-detail">
+          <h4>个人职责</h4>
+          <ul>
+            <li><strong>从 0 到 1 建设：</strong>参与需求梳理、整体架构、数据库与接口设计，划分接收、中转、调度和发送职责。</li>
+            <li><strong>多渠道交付：</strong>基于策略模式集成邮件、短信、飞书，承担核心编码、自测、联调与发布，一个多月完成交付，单测覆盖率达 90%。</li>
+          </ul>
+        </div>
+        <div class="project-detail">
+          <h4>难点亮点</h4>
+          <ul>
+            <li><strong>插件式中转：</strong>抽象消息中转接口，支持消息队列与 MySQL 按部署条件切换，解耦请求接收和实际发送。</li>
+            <li><strong>隔离与定时：</strong>按渠道、优先级拆分队列，结合 Redis 实现定时投递，避免局部积压拖慢整体链路。</li>
+            <li><strong>容灾与性能：</strong>持续异常时自动切换备用供应商；通过缓存、表结构与发送链路优化，将吞吐由 1,000 QPS 提升至 3,000 QPS。</li>
+          </ul>
+        </div>
+        </div>
+        <div class="web-only project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>从 0 到 1 架构设计：</strong>参与需求梳理、整体架构、数据库建模和接口设计，明确消息接收、中转、调度与渠道发送的职责边界。</li>
+              <li><strong>多渠道能力接入：</strong>完成邮件、短信、飞书等渠道集成，基于策略模式统一发送接口并封装渠道差异，支持后续渠道快速扩展。</li>
+              <li><strong>核心研发与交付：</strong>承担主要功能编码、自测、联调与发布，在一个多月内完成交付，单元测试覆盖率达到 <strong>90%</strong>，平台稳定运行超过半年且未发生运营事故。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>插件式中转层：</strong>抽象统一消息中转接口，支持消息队列与 MySQL 等实现按部署条件切换，隔离请求接收与实际发送，降低底层变更对业务接入方的影响。</li>
+              <li><strong>优先级与定时投递：</strong>按渠道和优先级拆分消息队列，结合 Redis 实现精确定时，避免单一渠道或低优先级消息积压拖慢整体链路。</li>
+              <li><strong>多厂商容灾：</strong>同类渠道接入多个第三方服务商，持续异常时自动切换备用供应商，例如在阿里云与腾讯云短信服务之间切换，降低单点故障影响。</li>
+              <li><strong>吞吐性能优化：</strong>通过缓存、表结构和同步链路优化，将系统吞吐量由 <strong>1,000 QPS 提升至 3,000 QPS</strong>，满足公司内部多场景消息推送需求。</li>
+            </ul>
+          </div>
+        </div>
+        <p class="project-result print-only"><strong>交付结果</strong>售前、售后模块接入，平台稳定运行超过半年，未发生运营事故。</p>
+      </article>
 
-  <script>
-    const menuButton = document.querySelector("[data-menu-button]");
-    const exportButton = document.querySelector("[data-export-pdf]");
-    const navLinks = document.getElementById("primary-nav");
-    const sectionLinks = [...document.querySelectorAll(".nav-links a")];
-    const sections = [...document.querySelectorAll("header[id], section[id]")];
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      <article class="project web-only" id="voice-project" aria-labelledby="voice-title">
+        <header class="project-heading">
+          <p class="project-context">REAL-TIME AI <span>创维酷开</span></p>
+          <h3 id="voice-title">创维小维 AI 云平台</h3>
+          <p class="project-stack"><span>技术关键词</span>Java · Spring Boot · WebSocket · 异步编排 · ASR / NLU / TTS</p>
+        </header>
+        <p class="project-summary">为创维电视桌面软件及小维智能语音提供后台服务，覆盖语音检索、智能问答、设备控制和大模型对话等场景，线上设备规模约 <strong>2,000 万台、DAU 超 600 万</strong>，并通过数据看板与语音效果分析支撑运营和产品迭代。</p>
+        <div class="project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>核心通信接口：</strong>负责 AI 大脑 WebSocket 接口研发，完成设备接入、双向协议适配、语音交互编排和业务指令下发。</li>
+              <li><strong>模型路由与会话处理：</strong>负责大模型场景分流及异步会话处理，衔接语音识别、模型生成和设备端流式响应。</li>
+              <li><strong>数据分析能力：</strong>负责运营看板、业务报表与分析接口研发，完成多版本数据汇总、运营指标查询及 DDS 报表接入。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>语音链路编排：</strong>基于 WebSocket 串联 ASR、NLU、业务指令与 TTS，统一处理音频上传、识别回传和语音分片下发，适配语音、文本及独立播报场景。</li>
+              <li><strong>协议适配与业务分流：</strong>封装设备与 AI 大脑的双向协议适配层，根据场景路由普通语义与大模型请求，并支持自定义指令和“可见即可说”等交互。</li>
+              <li><strong>异步会话管理：</strong>使用线程池异步执行模型任务，协调识别、生成与播报完成时机，实现流式响应和连接生命周期管理。</li>
+              <li><strong>配置化报表：</strong>通过指标标签、SQL 与表头配置统一接入 DDS 报表，减少不同业务报表的重复开发。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
 
-    menuButton?.addEventListener("click", () => {
-      const open = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!open));
-      menuButton.setAttribute("aria-label", open ? "打开导航" : "关闭导航");
-      navLinks.classList.toggle("is-open", !open);
-      document.body.classList.toggle("menu-open", !open);
-    });
+      <article class="project web-only" id="saas-project" aria-labelledby="saas-title">
+        <header class="project-heading">
+          <p class="project-context">MULTI-TENANT SAAS <span>南京运享通</span></p>
+          <h3 id="saas-title">智慧体育场馆 SaaS 运营平台</h3>
+          <p class="project-stack"><span>技术关键词</span>Java · Spring Cloud · Redis · RabbitMQ · MySQL · ELK · 多租户</p>
+        </header>
+        <p class="project-summary">面向连锁体育场馆的一体化 SaaS 平台，覆盖全国多数省份及 <strong>30+ 运营中心</strong>，提供场地预订、票务核销、会员课程、营销优惠券和聚合支付等能力，并按用户端、运营后台、管理后台、任务调度和工作流拆分服务。</p>
+        <div class="project-full">
+          <div class="project-detail">
+            <h4>个人职责</h4>
+            <ul>
+              <li><strong>优惠券秒杀：</strong>从 0 到 1 负责活动校验、库存扣减、防重复领取和异步发券等核心链路。</li>
+              <li><strong>订单与退款：</strong>负责资源预占、支付回调、超时关单、退款分摊及库存回补，保障库存和资金状态一致。</li>
+              <li><strong>交付与运维：</strong>参与服务拆分、版本发布及日常维护，通过 ELK 排查跨服务线上问题，重点治理订单未关闭和资源未释放等异常。</li>
+            </ul>
+          </div>
+          <div class="project-detail">
+            <h4>难点亮点</h4>
+            <ul>
+              <li><strong>高并发秒杀：</strong>将热点库存前置到 Redis 并原子扣减，使用“活动 + 券 + 用户”缓存键防止重复领取，再通过 RabbitMQ 异步发券落库，降低数据库热点竞争。</li>
+              <li><strong>订单超时一致性：</strong>基于 RabbitMQ 延迟消息触发关单，消费时再次校验支付、完工与过期状态；资源回补结合乐观锁和延迟重试，避免重复释放或长期占用。</li>
+              <li><strong>退款资金安全：</strong>根据支付流水计算剩余可退金额并按原支付方式分摊，本地异常回滚事务，对已完成的一卡通退款执行冲正，降低跨系统部分成功产生的资金差错。</li>
+              <li><strong>多租户数据隔离：</strong>基于自定义注解、AOP、ThreadLocal 与 AbstractRoutingDataSource，按运营中心或租户动态路由中心库、场馆库、报表库和业务库，使业务逻辑与数据源选择解耦。</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+      <div class="page-footer" aria-hidden="true"><span>周志阳 · 项目经历</span><span>03 / 03</span></div>
+    </section>
 
-    navLinks?.addEventListener("click", (event) => {
-      if (event.target.closest("a")) {
-        menuButton?.setAttribute("aria-expanded", "false");
-        menuButton?.setAttribute("aria-label", "打开导航");
-        navLinks.classList.remove("is-open");
-        document.body.classList.remove("menu-open");
-      }
-    });
-
-    exportButton?.addEventListener("click", () => {
-      menuButton?.setAttribute("aria-expanded", "false");
-      menuButton?.setAttribute("aria-label", "打开导航");
-      navLinks?.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
-      window.print();
-    });
-
-    if (reduceMotion) {
-      document.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
-    } else {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-    }
-
-    const setActiveSection = () => {
-      const offset = window.scrollY + 110;
-      let current = "profile";
-      sections.forEach((section) => {
-        if (section.offsetTop <= offset) current = section.id;
-      });
-      sectionLinks.forEach((link) => {
-        const active = link.getAttribute("href") === "#" + current;
-        link.classList.toggle("active", active);
-        if (active) link.setAttribute("aria-current", "page");
-        else link.removeAttribute("aria-current");
-      });
-    };
-
-    window.addEventListener("scroll", setActiveSection, { passive: true });
-    setActiveSection();
-    document.getElementById("current-year").textContent = String(new Date().getFullYear());
-  </script>
+    <section class="strengths-section web-only" id="strengths" aria-labelledby="strengths-title">
+      <div class="section-heading"><h2 id="strengths-title">个人优势</h2><span>STRENGTHS</span></div>
+      <dl class="strengths">
+        <div><dt>AI 应用能力</dt><dd>具备 Agent、RAG 与评测优化平台的完整项目经验，能够围绕业务完成配置化 Agent 建设、RAG 全链路优化及 LLM 应用质量评测，熟悉 Prompt、Skill、MCP、Function Calling、混合检索、Rerank、G-Eval、Faithfulness 等技术。</dd></div>
+        <div><dt>后端工程能力</dt><dd>具备多年 Java 后端研发经验，熟悉 Spring Boot、Spring Cloud、MySQL、Redis、Kafka / RabbitMQ 及微服务架构，拥有高并发消息平台、多租户 SaaS、WebSocket 长连接与复杂交易链路开发经验。</dd></div>
+        <div><dt>业务与交付能力</dt><dd>经历物流海关、智能电视、智慧场馆等业务，能够从规则梳理、方案设计、核心开发到上线运维完整推进项目，并具备跨地区业务接入和线上问题定位能力。</dd></div>
+      </dl>
+    </section>
+  </main>
+  <footer class="site-footer"><span>© <span id="current-year">2026</span> 周志阳</span><span>Java 后端 · AI 应用开发</span></footer>
 </body>
 </html>
